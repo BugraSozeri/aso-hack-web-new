@@ -119,12 +119,12 @@ export default function PricingPage() {
           <Card
             key={plan.name}
             className={`relative flex flex-col ${
-              plan.popular ? "border-indigo-600 shadow-xl dark:border-indigo-400" : ""
+              plan.popular ? "border-amber-500 shadow-xl dark:border-amber-400" : ""
             }`}
           >
             {plan.popular && (
               <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <Badge className="bg-indigo-600 text-white">Most Popular</Badge>
+                <Badge className="bg-amber-500 text-white">Most Popular</Badge>
               </div>
             )}
             <CardHeader className="text-center">
@@ -145,7 +145,7 @@ export default function PricingPage() {
                 {plan.features.map((feature) => (
                   <li key={feature.name} className="flex items-center gap-3 text-sm">
                     {feature.included ? (
-                      <CheckCircle2 className="h-4 w-4 shrink-0 text-indigo-600 dark:text-indigo-400" />
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-amber-500 dark:text-amber-400" />
                     ) : (
                       <X className="h-4 w-4 shrink-0 text-muted-foreground/40" />
                     )}
@@ -163,7 +163,7 @@ export default function PricingPage() {
               <Button
                 className={`mt-8 w-full ${
                   plan.popular
-                    ? "bg-indigo-600 hover:bg-indigo-700 text-white"
+                    ? "bg-amber-500 hover:bg-amber-600 text-white"
                     : ""
                 }`}
                 variant={plan.popular ? "default" : "outline"}

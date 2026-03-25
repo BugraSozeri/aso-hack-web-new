@@ -32,7 +32,7 @@ export default function BlogPage() {
               key={cat}
               variant={cat === "All" ? "default" : "secondary"}
               className={`cursor-pointer px-4 py-1.5 text-sm ${
-                cat === "All" ? "bg-indigo-600 text-white hover:bg-indigo-700" : ""
+                cat === "All" ? "bg-amber-500 text-white hover:bg-amber-600" : ""
               }`}
             >
               {cat}
@@ -83,9 +83,9 @@ export default function BlogPage() {
           <input
             type="email"
             placeholder="your@email.com"
-            className="flex-1 rounded-md border bg-background px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-600"
+            className="flex-1 rounded-md border bg-background px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-500"
           />
-          <button className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+          <button className="rounded-md bg-amber-500 px-4 py-2 text-sm font-medium text-white hover:bg-amber-600">
             Subscribe
           </button>
         </div>

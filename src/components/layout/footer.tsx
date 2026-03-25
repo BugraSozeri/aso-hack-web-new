@@ -29,9 +29,9 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2">
-              <Rocket className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+              <Rocket className="h-5 w-5 text-amber-500 dark:text-amber-400" />
               <span className="text-lg font-bold">
-                ASO<span className="text-indigo-600 dark:text-indigo-400">Hack</span>
+                ASO<span className="text-amber-500 dark:text-amber-400">Hack</span>
               </span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground">

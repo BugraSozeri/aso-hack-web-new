@@ -21,9 +21,9 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <Rocket className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+          <Rocket className="h-6 w-6 text-amber-500 dark:text-amber-400" />
           <span className="text-xl font-bold tracking-tight">
-            ASO<span className="text-indigo-600 dark:text-indigo-400">Hack</span>
+            ASO<span className="text-amber-500 dark:text-amber-400">Hack</span>
           </span>
         </Link>
 
@@ -44,7 +44,7 @@ export function Header() {
           <Button variant="ghost" size="sm" asChild>
             <Link href="/login">Log in</Link>
           </Button>
-          <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700 text-white" asChild>
+          <Button size="sm" className="rounded-lg bg-amber-500 px-4 font-semibold text-white shadow-sm shadow-amber-500/25 hover:bg-amber-600" asChild>
             <Link href="/signup">Get Started Free</Link>
           </Button>
         </div>
@@ -72,7 +72,7 @@ export function Header() {
                   <Button variant="outline" asChild>
                     <Link href="/login" onClick={() => setOpen(false)}>Log in</Link>
                   </Button>
-                  <Button className="bg-indigo-600 hover:bg-indigo-700 text-white" asChild>
+                  <Button className="rounded-lg bg-amber-500 font-semibold text-white shadow-sm shadow-amber-500/25 hover:bg-amber-600" asChild>
                     <Link href="/signup" onClick={() => setOpen(false)}>Get Started Free</Link>
                   </Button>
                 </div>

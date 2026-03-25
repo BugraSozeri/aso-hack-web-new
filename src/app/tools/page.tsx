@@ -68,7 +68,7 @@ const tools = [
     icon: TrendingUp,
     href: "/tools/keyword-explorer",
     badge: "Starter",
-    badgeColor: "bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-400",
+    badgeColor: "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-400",
     features: ["Related keyword discovery", "Volume & difficulty scores", "Country-specific data"],
   },
   {
@@ -78,7 +78,7 @@ const tools = [
     icon: Users,
     href: "/tools/competitor-tracker",
     badge: "Starter",
-    badgeColor: "bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-400",
+    badgeColor: "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-400",
     features: ["Daily rank snapshots", "Rating & review tracking", "Keyword overlap analysis"],
   },
   {
@@ -109,8 +109,8 @@ export default function ToolsPage() {
           <Card key={tool.name} className="flex flex-col transition-shadow hover:shadow-lg">
             <CardHeader>
               <div className="flex items-center justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 dark:bg-indigo-950">
-                  <tool.icon className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100 dark:bg-amber-950">
+                  <tool.icon className="h-6 w-6 text-amber-500 dark:text-amber-400" />
                 </div>
                 <span className={`rounded-full px-3 py-1 text-xs font-medium ${tool.badgeColor}`}>
                   {tool.badge}
@@ -123,7 +123,7 @@ export default function ToolsPage() {
               <ul className="mb-6 space-y-2">
                 {tool.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <div className="h-1.5 w-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400" />
+                    <div className="h-1.5 w-1.5 rounded-full bg-amber-500 dark:bg-amber-400" />
                     {feature}
                   </li>
                 ))}

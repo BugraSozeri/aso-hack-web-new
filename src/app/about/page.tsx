@@ -37,7 +37,7 @@ export default function AboutPage() {
       <div className="mx-auto max-w-3xl text-center">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
           ASO Tools That{" "}
-          <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
             Actually Help
           </span>
         </h1>
@@ -67,8 +67,8 @@ export default function AboutPage() {
         <div className="mt-10 grid gap-8 md:grid-cols-3">
           {values.map((value) => (
             <div key={value.title} className="rounded-xl border p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-950">
-                <value.icon className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-amber-100 dark:bg-amber-950">
+                <value.icon className="h-6 w-6 text-amber-500 dark:text-amber-400" />
               </div>
               <h3 className="mt-4 text-lg font-semibold">{value.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{value.description}</p>
@@ -106,7 +106,7 @@ export default function AboutPage() {
           Try our free tools — no signup required.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white" asChild>
+          <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white" asChild>
             <Link href="/tools">
               Explore Tools <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

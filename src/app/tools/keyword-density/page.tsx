@@ -141,8 +141,8 @@ export default function KeywordDensityPage() {
 
       <div className="mb-10">
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 dark:bg-indigo-950">
-            <Search className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100 dark:bg-amber-950">
+            <Search className="h-6 w-6 text-amber-500 dark:text-amber-400" />
           </div>
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Keyword Density Checker</h1>
@@ -162,7 +162,7 @@ export default function KeywordDensityPage() {
           variant={store === "ios" ? "default" : "outline"}
           size="sm"
           onClick={() => setStore("ios")}
-          className={store === "ios" ? "bg-indigo-600 text-white hover:bg-indigo-700" : ""}
+          className={store === "ios" ? "bg-amber-500 text-white hover:bg-amber-600" : ""}
         >
           iOS (App Store)
         </Button>
@@ -170,7 +170,7 @@ export default function KeywordDensityPage() {
           variant={store === "android" ? "default" : "outline"}
           size="sm"
           onClick={() => setStore("android")}
-          className={store === "android" ? "bg-indigo-600 text-white hover:bg-indigo-700" : ""}
+          className={store === "android" ? "bg-amber-500 text-white hover:bg-amber-600" : ""}
         >
           Android (Google Play)
         </Button>
@@ -192,7 +192,7 @@ export default function KeywordDensityPage() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g. Meditation Timer - Mindfulness"
-              className="w-full rounded-lg border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-600"
+              className="w-full rounded-lg border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-500"
             />
           </div>
 
@@ -221,7 +221,7 @@ export default function KeywordDensityPage() {
                   ? "e.g. Guided sessions & sleep sounds"
                   : "e.g. Guided meditation, sleep sounds, breathing exercises for stress relief"
               }
-              className="w-full rounded-lg border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-600"
+              className="w-full rounded-lg border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-500"
             />
           </div>
 
@@ -239,7 +239,7 @@ export default function KeywordDensityPage() {
                 value={keywordField}
                 onChange={(e) => setKeywordField(e.target.value)}
                 placeholder="e.g. relax,calm,breathe,anxiety,sleep,focus,zen,yoga"
-                className="w-full rounded-lg border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-600"
+                className="w-full rounded-lg border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-500"
               />
               <p className="mt-1 text-xs text-muted-foreground">
                 Separate with commas, no spaces. Don&apos;t repeat words from title/subtitle.
@@ -266,7 +266,7 @@ export default function KeywordDensityPage() {
               onChange={(e) => setDescription(e.target.value)}
               rows={8}
               placeholder="Paste your app description here..."
-              className="w-full rounded-lg border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-600"
+              className="w-full rounded-lg border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-500"
             />
           </div>
 
@@ -274,7 +274,7 @@ export default function KeywordDensityPage() {
             <Button
               onClick={handleAnalyze}
               disabled={!allText.trim()}
-              className="bg-indigo-600 text-white hover:bg-indigo-700"
+              className="bg-amber-500 text-white hover:bg-amber-600"
             >
               <BarChart3 className="mr-2 h-4 w-4" />
               Analyze Keywords
@@ -298,25 +298,25 @@ export default function KeywordDensityPage() {
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                      <p className="text-2xl font-bold text-amber-500 dark:text-amber-400">
                         {analysis.totalWords}
                       </p>
                       <p className="text-xs text-muted-foreground">Total Words</p>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                      <p className="text-2xl font-bold text-amber-500 dark:text-amber-400">
                         {analysis.charCount}
                       </p>
                       <p className="text-xs text-muted-foreground">Total Characters</p>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                      <p className="text-2xl font-bold text-amber-500 dark:text-amber-400">
                         {analysis.keywords.length}
                       </p>
                       <p className="text-xs text-muted-foreground">Unique Keywords</p>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                      <p className="text-2xl font-bold text-amber-500 dark:text-amber-400">
                         {analysis.bigrams.length}
                       </p>
                       <p className="text-xs text-muted-foreground">Repeated Phrases</p>

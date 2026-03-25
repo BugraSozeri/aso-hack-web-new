@@ -40,19 +40,19 @@ export const mdxComponents: MDXComponents = {
   a: ({ href, children, ...props }) => {
     if (href?.startsWith("/")) {
       return (
-        <Link href={href} className="font-medium text-indigo-600 underline underline-offset-4 hover:text-indigo-500 dark:text-indigo-400" {...props}>
+        <Link href={href} className="font-medium text-amber-500 underline underline-offset-4 hover:text-amber-400 dark:text-amber-400" {...props}>
           {children}
         </Link>
       );
     }
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="font-medium text-indigo-600 underline underline-offset-4 hover:text-indigo-500 dark:text-indigo-400" {...props}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className="font-medium text-amber-500 underline underline-offset-4 hover:text-amber-400 dark:text-amber-400" {...props}>
         {children}
       </a>
     );
   },
   blockquote: ({ children, ...props }) => (
-    <blockquote className="mb-4 border-l-4 border-indigo-600 pl-4 italic text-muted-foreground dark:border-indigo-400" {...props}>
+    <blockquote className="mb-4 border-l-4 border-amber-500 pl-4 italic text-muted-foreground dark:border-amber-400" {...props}>
       {children}
     </blockquote>
   ),

@@ -91,30 +91,34 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-100 via-transparent to-transparent dark:from-indigo-950/30" />
-        <div className="mx-auto max-w-7xl px-4 pb-16 pt-20 sm:px-6 sm:pb-24 sm:pt-32 lg:px-8">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-100/50 via-transparent to-transparent dark:from-amber-950/30" />
+        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="secondary" className="mb-6">
+            <Badge variant="secondary" className="mb-6 px-4 py-1.5 text-sm">
               App Store Optimization for Indie Developers
             </Badge>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
               Rank Higher.{" "}
-              <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
                 Grow Faster.
               </span>
             </h1>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
               Enterprise-grade ASO tools at indie-dev prices. Research keywords, analyze
               listings, track competitors, and optimize your app store presence — starting
               free.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white" asChild>
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button
+                size="lg"
+                className="h-12 rounded-xl bg-amber-500 px-8 text-base font-semibold text-white shadow-lg shadow-amber-500/25 hover:bg-amber-600"
+                asChild
+              >
                 <Link href="/tools/keyword-density">
                   Try Free Tools <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline" className="h-12 rounded-xl px-8 text-base" asChild>
                 <Link href="/pricing">View Pricing</Link>
               </Button>
             </div>
@@ -123,11 +127,11 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="border-y bg-muted/30">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
+      <section className="border-y bg-muted/40">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-10 sm:px-6 md:grid-cols-4 lg:px-8">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">{stat.value}</p>
+              <p className="text-3xl font-bold text-amber-500 dark:text-amber-400 sm:text-4xl">{stat.value}</p>
               <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
             </div>
           ))}
@@ -135,24 +139,24 @@ export default function Home() {
       </section>
 
       {/* Benefits */}
-      <section className="py-20">
+      <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Why Indie Developers Choose ASOHack
             </h2>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-4 text-lg text-muted-foreground">
               Stop overpaying for ASO tools. Get everything you need to compete with the big players.
             </p>
           </div>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
+          <div className="mt-16 grid gap-10 md:grid-cols-3">
             {benefits.map((benefit) => (
               <div key={benefit.title} className="text-center">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 dark:bg-indigo-950">
-                  <benefit.icon className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 dark:bg-amber-950/50">
+                  <benefit.icon className="h-7 w-7 text-amber-500 dark:text-amber-400" />
                 </div>
-                <h3 className="mt-4 text-lg font-semibold">{benefit.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{benefit.description}</p>
+                <h3 className="mt-5 text-lg font-semibold">{benefit.title}</h3>
+                <p className="mt-2 text-muted-foreground leading-relaxed">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -160,43 +164,43 @@ export default function Home() {
       </section>
 
       {/* Tools Grid */}
-      <section className="border-t bg-muted/30 py-20">
+      <section className="border-t bg-muted/30 py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight">Powerful ASO Tools</h2>
-            <p className="mt-4 text-muted-foreground">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Powerful ASO Tools</h2>
+            <p className="mt-4 text-lg text-muted-foreground">
               Everything you need to optimize your app store presence, all in one place.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {tools.map((tool) => (
               <Link key={tool.name} href={tool.href}>
-                <Card className="h-full transition-shadow hover:shadow-lg">
-                  <CardHeader>
+                <Card className="group h-full border-border/50 transition-all hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/5">
+                  <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-950">
-                        <tool.icon className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-100 dark:bg-amber-950/50">
+                        <tool.icon className="h-5 w-5 text-amber-500 dark:text-amber-400" />
                       </div>
                       <Badge
                         variant={tool.badge === "Free" ? "secondary" : "default"}
                         className={
                           tool.badge === "Pro"
-                            ? "bg-indigo-600 text-white hover:bg-indigo-700"
+                            ? "bg-amber-500/10 text-amber-600 dark:text-amber-400"
                             : ""
                         }
                       >
                         {tool.badge}
                       </Badge>
                     </div>
-                    <CardTitle className="mt-3 text-lg">{tool.name}</CardTitle>
-                    <CardDescription>{tool.description}</CardDescription>
+                    <CardTitle className="mt-4 text-lg">{tool.name}</CardTitle>
+                    <CardDescription className="leading-relaxed">{tool.description}</CardDescription>
                   </CardHeader>
                 </Card>
               </Link>
             ))}
           </div>
-          <div className="mt-10 text-center">
-            <Button variant="outline" asChild>
+          <div className="mt-12 text-center">
+            <Button variant="outline" className="h-11 rounded-xl px-6" asChild>
               <Link href="/tools">
                 View All Tools <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -206,15 +210,15 @@ export default function Home() {
       </section>
 
       {/* Pricing Teaser */}
-      <section className="py-20">
+      <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight">Simple, Indie-Friendly Pricing</h2>
-            <p className="mt-4 text-muted-foreground">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Simple, Indie-Friendly Pricing</h2>
+            <p className="mt-4 text-lg text-muted-foreground">
               Start free. Upgrade when you&apos;re ready. No surprises.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
             {[
               {
                 name: "Free",
@@ -258,34 +262,34 @@ export default function Home() {
             ].map((plan) => (
               <Card
                 key={plan.name}
-                className={`relative ${plan.popular ? "border-indigo-600 shadow-lg dark:border-indigo-400" : ""}`}
+                className={`relative flex flex-col ${plan.popular ? "border-amber-500 shadow-lg shadow-amber-500/10 dark:border-amber-400/50" : "border-border/50"}`}
               >
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-indigo-600 text-white">Most Popular</Badge>
+                    <Badge className="bg-amber-500 px-3 text-white">Most Popular</Badge>
                   </div>
                 )}
-                <CardHeader className="text-center">
-                  <CardTitle>{plan.name}</CardTitle>
-                  <div className="mt-2">
+                <CardHeader className="text-center pb-2">
+                  <CardTitle className="text-xl">{plan.name}</CardTitle>
+                  <div className="mt-3">
                     <span className="text-4xl font-bold">{plan.price}</span>
                     {plan.period && (
                       <span className="text-muted-foreground">{plan.period}</span>
                     )}
                   </div>
-                  <CardDescription>{plan.description}</CardDescription>
+                  <CardDescription className="mt-1">{plan.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
+                <CardContent className="flex flex-1 flex-col pt-4">
+                  <ul className="flex-1 space-y-3">
                     {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 text-sm">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-indigo-600 dark:text-indigo-400" />
+                      <li key={feature} className="flex items-start gap-2.5 text-sm">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-amber-500 dark:text-amber-400" />
                         {feature}
                       </li>
                     ))}
                   </ul>
                   <Button
-                    className={`mt-6 w-full ${plan.popular ? "bg-indigo-600 hover:bg-indigo-700 text-white" : ""}`}
+                    className={`mt-8 h-11 w-full rounded-xl ${plan.popular ? "bg-amber-500 font-semibold text-white shadow-lg shadow-amber-500/25 hover:bg-amber-600" : ""}`}
                     variant={plan.popular ? "default" : "outline"}
                     asChild
                   >
@@ -301,33 +305,36 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="border-t bg-indigo-600 dark:bg-indigo-950">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white">
-              Ready to Boost Your App Store Rankings?
-            </h2>
-            <p className="mt-4 text-indigo-100">
-              Join thousands of indie developers using ASOHack to grow their apps organically.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button
-                size="lg"
-                className="bg-white text-indigo-600 hover:bg-indigo-50"
-                asChild
-              >
-                <Link href="/tools/keyword-density">
-                  Try Free Tools <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10"
-                asChild
-              >
-                <Link href="/blog">Read the Blog</Link>
-              </Button>
+      <section className="border-t">
+        <div className="relative overflow-hidden bg-gradient-to-br from-amber-500 to-orange-600 dark:from-amber-950 dark:to-stone-950">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.1),_transparent_50%)]" />
+          <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                Ready to Boost Your App Store Rankings?
+              </h2>
+              <p className="mt-4 text-lg text-white/80">
+                Join thousands of indie developers using ASOHack to grow their apps organically.
+              </p>
+              <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Button
+                  size="lg"
+                  className="h-12 rounded-xl bg-white px-8 text-base font-semibold text-amber-600 shadow-lg hover:bg-amber-50"
+                  asChild
+                >
+                  <Link href="/tools/keyword-density">
+                    Try Free Tools <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="h-12 rounded-xl border-white/30 px-8 text-base text-white hover:bg-white/10"
+                  asChild
+                >
+                  <Link href="/blog">Read the Blog</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
