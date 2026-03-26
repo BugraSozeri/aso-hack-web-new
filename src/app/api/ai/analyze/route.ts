@@ -192,6 +192,24 @@ ${JSON.stringify(data.benchmarks || {}, null, 2)}
 
 Please provide your full benchmark analysis and strategy following the output format in your instructions.`;
 
+    case "review-analyzer":
+      return `Please analyze these app reviews and provide your expert recommendations:
+
+**App Name:** ${data.appName || "Not provided"}
+**Platform:** ${data.platform || "iOS"}
+**Category:** ${data.category || "Not specified"}
+**Total Reviews Analyzed:** ${data.reviewCount || 0}
+**Average Sentiment Score (client-side):** ${data.sentimentSummary || "N/A"}
+**Positive Reviews:** ${data.positiveCount || 0} (${data.positivePercent || 0}%)
+**Neutral Reviews:** ${data.neutralCount || 0} (${data.neutralPercent || 0}%)
+**Negative Reviews:** ${data.negativeCount || 0} (${data.negativePercent || 0}%)
+**Top Words in Reviews:** ${JSON.stringify(data.topWords || [])}
+
+**Full Review Text:**
+${data.reviews || "No reviews provided"}
+
+Please provide your full review analysis report following the output format in your instructions.`;
+
     default:
       return `Please analyze the following data and provide actionable recommendations: ${JSON.stringify(data)}`;
   }

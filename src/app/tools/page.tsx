@@ -58,8 +58,8 @@ const tools = [
       "Understand what users love and hate about your app. AI-powered sentiment analysis extracts themes and trends from app reviews.",
     icon: Star,
     href: "/tools/review-analyzer",
-    badge: "Free with Login",
-    badgeColor: "bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-400",
+    badge: "Free",
+    badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400",
     features: ["Sentiment breakdown", "Theme extraction", "Trend analysis"],
   },
   {
