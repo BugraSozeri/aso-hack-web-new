@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { AIAnalysisPanel } from "@/components/tools/ai-analysis-panel";
 
 const STOP_WORDS = new Set([
   "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for", "of",
@@ -458,6 +459,32 @@ export default function KeywordDensityPage() {
               </div>
             </div>
           )}
+
+          {/* AI Analysis */}
+          <AIAnalysisPanel
+            toolId="keyword-density"
+            data={{
+              platform: store,
+              title,
+              subtitle,
+              keywords: keywordField,
+              descriptionLength: description.length,
+              topKeywords: analysis.keywords.slice(0, 10).map((k) => ({
+                word: k.word,
+                count: k.count,
+                density: k.density.toFixed(2) + "%",
+              })),
+              bigrams: analysis.bigrams.slice(0, 5).map((b) => b.phrase),
+              charLimits: {
+                title: `${title.length}/${store === "ios" ? 30 : 30}`,
+                subtitle: `${subtitle.length}/${store === "ios" ? 30 : 80}`,
+                keywords: store === "ios" ? `${keywordField.length}/100` : "N/A",
+                description: `${description.length}/4000`,
+              },
+            }}
+            disabled={title.length === 0 && description.length === 0}
+            disabledMessage="Enter your title or description to enable AI keyword analysis."
+          />
         </div>
       </div>
     </div>

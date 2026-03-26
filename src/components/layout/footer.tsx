@@ -4,19 +4,24 @@ import { Rocket } from "lucide-react";
 const footerLinks = {
   Product: [
     { name: "Tools", href: "/tools" },
+    { name: "Ad Analytics", href: "/tools/ad-analytics" },
     { name: "Pricing", href: "/pricing" },
     { name: "Changelog", href: "/changelog" },
   ],
   Resources: [
     { name: "Blog", href: "/blog" },
     { name: "ASO Guide", href: "/blog/aso-guide-for-beginners" },
+    { name: "Ad Metrics 101", href: "/blog/mobile-ad-metrics-guide" },
     { name: "Documentation", href: "/docs" },
+  ],
+  Advertising: [
+    { name: "Ad Networks", href: "/ads" },
+    { name: "Apple Search Ads", href: "/blog/apple-search-ads-guide" },
+    { name: "Meta Ads", href: "/blog/meta-ads-app-install-guide" },
   ],
   Company: [
     { name: "About", href: "/about" },
     { name: "Contact", href: "mailto:hello@asohack.com" },
-  ],
-  Legal: [
     { name: "Privacy", href: "/privacy" },
     { name: "Terms", href: "/terms" },
   ],

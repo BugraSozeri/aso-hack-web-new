@@ -8,6 +8,7 @@ import {
   TrendingUp,
   Users,
   FileCheck,
+  Calculator,
   ArrowRight,
 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -90,6 +91,16 @@ const tools = [
     badge: "Pro",
     badgeColor: "bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-400",
     features: ["AI-powered analysis", "Best practice scoring", "Improvement suggestions"],
+  },
+  {
+    name: "Ad Analytics Calculator",
+    description:
+      "Calculate ROAS, LTV, CPI, and conversion rates for your ad campaigns. Get strategy recommendations based on industry benchmarks.",
+    icon: Calculator,
+    href: "/tools/ad-analytics",
+    badge: "Free",
+    badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400",
+    features: ["Full funnel analysis", "ROAS & LTV calculator", "Strategy recommendations"],
   },
 ];
 
