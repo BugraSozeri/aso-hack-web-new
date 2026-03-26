@@ -192,6 +192,33 @@ ${JSON.stringify(data.benchmarks || {}, null, 2)}
 
 Please provide your full benchmark analysis and strategy following the output format in your instructions.`;
 
+    case "competitor-tracker": {
+      const competitors = (data.competitors as Array<Record<string, string>> | undefined) ?? [];
+      const competitorText = competitors
+        .filter((c) => c.name)
+        .map((c, i) => `
+Competitor ${i + 1}: ${c.name}
+- Rating: ${c.rating || "N/A"} (${c.reviewCount || "N/A"} reviews)
+- Title/Keywords: ${c.titleKeywords || "N/A"}
+- Key Features / Notes: ${c.notes || "N/A"}`)
+        .join("\n");
+
+      return `Please analyze this competitive landscape and provide strategic recommendations:
+
+**My App:**
+- Name: ${data.appName || "Not provided"}
+- Category: ${data.category || "Not specified"}
+- Platform: ${data.platform === "android" ? "Google Play" : "iOS App Store"}
+- Rating: ${data.myRating || "N/A"} (${data.myReviewCount || "N/A"} reviews)
+- Title/Keywords in listing: ${data.myTitleKeywords || "N/A"}
+- Key differentiators / features: ${data.myNotes || "N/A"}
+
+**Competitors (${competitors.filter((c) => c.name).length}):**
+${competitorText || "No competitors provided"}
+
+Please provide your full competitive intelligence report following the output format in your instructions.`;
+    }
+
     case "keyword-explorer":
       return `Please research keywords for this app and provide comprehensive keyword opportunities:
 

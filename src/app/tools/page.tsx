@@ -78,8 +78,8 @@ const tools = [
       "Monitor competitor app rankings, ratings, review velocity, and keyword strategies. Get daily snapshots and alerts.",
     icon: Users,
     href: "/tools/competitor-tracker",
-    badge: "Starter",
-    badgeColor: "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-400",
+    badge: "Free",
+    badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400",
     features: ["Daily rank snapshots", "Rating & review tracking", "Keyword overlap analysis"],
   },
   {
