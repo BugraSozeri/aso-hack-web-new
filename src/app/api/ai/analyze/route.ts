@@ -1,11 +1,41 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { getMasterPrompt, isValidToolId } from "@/lib/prompts";
+import { headers } from "next/headers";
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
+// In-memory monthly rate limiter: key = "ip:YYYY-MM", value = usage count
+// Resets automatically as months change; cleared on server restart (acceptable for now)
+const usageMap = new Map<string, number>();
+const MONTHLY_LIMIT = 1;
+
+function getMonthKey(): string {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
+}
+
 export async function POST(request: Request) {
+  const headersList = await headers();
+  const ip =
+    headersList.get("x-forwarded-for")?.split(",")[0].trim() ||
+    headersList.get("x-real-ip") ||
+    "unknown";
+
+  const usageKey = `${ip}:${getMonthKey()}`;
+  const currentUsage = usageMap.get(usageKey) ?? 0;
+
+  if (currentUsage >= MONTHLY_LIMIT) {
+    return new Response(
+      JSON.stringify({
+        error: "LIMIT_REACHED",
+        message: "You have used your free AI analysis for this month. Upgrade to Pro for unlimited analyses.",
+      }),
+      { status: 429, headers: { "Content-Type": "application/json" } }
+    );
+  }
+
   const body = await request.json();
   const { tool, data } = body as { tool: string; data: Record<string, unknown> };
 
@@ -27,8 +57,11 @@ export async function POST(request: Request) {
   const userMessage = buildUserMessage(tool, data);
 
   // Stream the response
+  // Increment usage before streaming (count the attempt)
+  usageMap.set(usageKey, currentUsage + 1);
+
   const stream = await anthropic.messages.stream({
-    model: "claude-3-5-haiku-20241022",
+    model: "claude-sonnet-4-6",
     max_tokens: 1500,
     system: systemPrompt,
     messages: [{ role: "user", content: userMessage }],
