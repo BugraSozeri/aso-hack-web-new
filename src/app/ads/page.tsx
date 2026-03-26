@@ -91,6 +91,16 @@ const adNetworks = [
     href: "/tools/ad-analytics",
     isTool: true,
   },
+  {
+    name: "Ad Benchmark Analyzer",
+    description:
+      "Compare your CPI, ROAS, CTR, and CVR against category-specific benchmarks. See where you rank and get AI-powered recommendations to reach top quartile.",
+    icon: BarChart3,
+    color: "bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400",
+    stats: { avgCpi: "Pro Tool", bestFor: "All Categories" },
+    href: "/tools/ad-benchmark",
+    isTool: true,
+  },
 ];
 
 const keyMetrics = [

@@ -102,6 +102,16 @@ const tools = [
     badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400",
     features: ["Full funnel analysis", "ROAS & LTV calculator", "Strategy recommendations"],
   },
+  {
+    name: "Ad Benchmark Analyzer",
+    description:
+      "Compare your CPI, ROAS, CTR, and CVR against industry benchmarks for 10 app categories. See your percentile and get AI-powered recommendations to reach top quartile.",
+    icon: TrendingUp,
+    href: "/tools/ad-benchmark",
+    badge: "Pro",
+    badgeColor: "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-400",
+    features: ["10 category benchmarks", "P25 / Median / Top 25% comparison", "AI strategy for top quartile"],
+  },
 ];
 
 export default function ToolsPage() {

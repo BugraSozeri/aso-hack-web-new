@@ -169,6 +169,29 @@ Please provide your mobile growth strategy recommendations.`;
 
 Please provide your full ASO audit report.`;
 
+    case "ad-benchmark":
+      return `Please analyze this app's ad performance against category benchmarks and provide a strategy to reach top-quartile performance:
+
+**App Category:** ${data.category || "Not specified"}
+**Platform:** ${data.platform || "iOS"}
+
+**User's Metrics:**
+- CPI (Cost Per Install): ${data.cpi ? `$${data.cpi}` : "Not provided"}
+- CTR (Click-Through Rate): ${data.ctr ? `${data.ctr}%` : "Not provided"}
+- CVR (Click → Install): ${data.cvr ? `${data.cvr}%` : "Not provided"}
+- LTV (30-day): ${data.ltv30 ? `$${data.ltv30}` : "Not provided"}
+- ROAS (30-day): ${data.roas30 ? `${data.roas30}x` : "Not provided"}
+- Install → Trial Rate: ${data.trialRate ? `${data.trialRate}%` : "N/A"}
+- Trial → Subscription Rate: ${data.subRate ? `${data.subRate}%` : "N/A"}
+
+**Category Benchmarks (${data.platform === "ios" ? "iOS" : "Android"}, P25 / Median / Top 25%):**
+${JSON.stringify(data.benchmarks || {}, null, 2)}
+
+**Top Ad Networks for this category:** ${JSON.stringify(data.bestNetworks || [])}
+**Category Insight:** ${data.categoryTip || ""}
+
+Please provide your full benchmark analysis and strategy following the output format in your instructions.`;
+
     default:
       return `Please analyze the following data and provide actionable recommendations: ${JSON.stringify(data)}`;
   }
