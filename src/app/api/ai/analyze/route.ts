@@ -192,6 +192,19 @@ ${JSON.stringify(data.benchmarks || {}, null, 2)}
 
 Please provide your full benchmark analysis and strategy following the output format in your instructions.`;
 
+    case "keyword-explorer":
+      return `Please research keywords for this app and provide comprehensive keyword opportunities:
+
+**Seed Keyword:** ${data.seedKeyword || "Not provided"}
+**App Category:** ${data.category || "Not specified"}
+**Platform:** ${data.platform === "android" ? "Google Play" : "iOS App Store"}
+**App Name:** ${data.appName || "Not provided"}
+**App Description / Context:** ${data.appContext || "Not provided"}
+**Current Title Keywords:** ${data.titleKeywords || "Not provided"}
+**Competitor Apps (if known):** ${data.competitors || "Not provided"}
+
+Please provide your full keyword research report following the output format in your instructions.`;
+
     case "review-analyzer":
       return `Please analyze these app reviews and provide your expert recommendations:
 
