@@ -67,13 +67,16 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <head>
+        {/* AdSense — beforeInteractive so it appears in static HTML for crawler verification */}
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7500177412741241"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
+      </head>
+      <body className="min-h-full flex flex-col">
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-N5GRSD9NMF"
           strategy="afterInteractive"
