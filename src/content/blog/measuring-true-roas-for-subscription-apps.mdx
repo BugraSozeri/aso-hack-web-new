@@ -1,0 +1,164 @@
+---
+title: "Measuring True ROAS for Subscription Apps"
+description: "Learn how to calculate true ROAS for subscription apps beyond first purchase. Actionable frameworks for indie developers to track real ad profitability."
+category: "Ad Fundamentals"
+date: "2026-03-26"
+author: "ASOHack Team"
+published: true
+---
+
+# Measuring True ROAS for Subscription Apps
+
+If you're running paid ads for a subscription app and optimizing for day-0 ROAS, you're flying blind. The revenue a subscriber generates on day one is almost never the revenue that determines whether your campaign is profitable. True ROAS for subscription apps requires a fundamentally different measurement approach — one that accounts for renewal cycles, churn curves, and the lifetime value that unfolds over months or years.
+
+This guide breaks down exactly how to measure true ROAS for subscription apps, why standard attribution misleads indie developers, and how to build a framework that ties ad spend to real business outcomes.
+
+---
+
+## Why Standard ROAS Fails Subscription Apps
+
+Traditional ROAS is simple: revenue generated ÷ ad spend. For a one-time purchase app, this works reasonably well. For a subscription app, it produces a dangerous illusion.
+
+Here's the core problem: when a user downloads your app after clicking an ad and starts a free trial, your ad platform reports zero immediate revenue. When they convert after 7 days, you might see $9.99. But if that subscriber stays for 18 months on an annual plan, the actual value attributed to that original click is $179.82 — a 17x difference.
+
+**Common measurement mistakes indie developers make:**
+
+- Optimizing campaigns based on install cost alone
+- Using 7-day or 28-day ROAS windows that miss most subscription revenue
+- Counting trial starts as conversions without tracking paid conversion rates
+- Ignoring platform fees (Apple takes 15-30%, Google takes 15%) when calculating actual revenue
+- Not separating new subscriber ROAS from reactivation ROAS
+
+Ad platforms love short attribution windows because they make campaigns look more profitable. Your job as a developer is to see through that and measure what actually flows into your bank account.
+
+---
+
+## The True ROAS Formula for Subscription Apps
+
+Measuring true ROAS for subscription apps means calculating **cohort-level revenue over a meaningful time horizon** and dividing it by the spend that generated that cohort.
+
+### The Core Formula
+
+**True ROAS = (Cohort LTV × Conversion Rate × (1 - Store Fee)) ÷ Cohort Ad Spend**
+
+Let's break down each component:
+
+1. **Cohort LTV** — The average revenue generated per subscriber acquired in a specific period, measured over 90, 180, or 365 days
+2. **Conversion Rate** — The percentage of ad-driven installs that become paying subscribers (trial-to-paid rate × install-to-trial rate)
+3. **Store Fee** — Apple App Store and Google Play both take 15% for developers earning under $1M/year, 30% above that threshold
+4. **Cohort Ad Spend** — The total spend attributed to acquiring that specific cohort of users
+
+### Practical Example
+
+Suppose you spend $1,000 on a Meta campaign in January. That campaign drives 200 installs. Of those:
+
+- 120 start a free trial (60% install-to-trial)
+- 48 convert to paid (40% trial-to-paid)
+- Average subscriber stays 8 months at $9.99/month
+
+**Cohort LTV** = 8 × $9.99 = $79.92 per subscriber  
+**Gross cohort revenue** = 48 × $79.92 = $3,836  
+**Net revenue after 15% store fee** = $3,836 × 0.85 = $3,260  
+**True ROAS** = $3,260 ÷ $1,000 = **3.26x**
+
+Compare this to what your ad platform shows: 48 conversions at $9.99 = $479.52 ÷ $1,000 = **0.48x**. That campaign looks like a disaster on day one. It's actually highly profitable over a full measurement window.
+
+---
+
+## Setting the Right ROAS Measurement Windows
+
+Not all subscription apps need the same measurement horizon. Your window should reflect your product's natural value realization period.
+
+### Recommended Windows by Subscription Type
+
+| Subscription Model | Minimum Window | Recommended Window |
+|---|---|---|
+| Weekly ($2.99–$4.99/week) | 30 days | 90 days |
+| Monthly ($6.99–$14.99/month) | 60 days | 180 days |
+| Annual ($49.99–$99.99/year) | 90 days | 365 days |
+| Freemium with delayed paywall | 90 days | 180 days |
+
+**Key principle:** Your ROAS window should capture at least 2 full renewal cycles for the majority of paying subscribers.
+
+For most indie subscription apps with monthly billing, a **180-day ROAS** gives you a reliable signal without waiting so long that the data becomes unusable for campaign optimization.
+
+---
+
+## Building a Cohort Tracking System Without Enterprise Tools
+
+You don't need MMP enterprise contracts or a data science team. Here's a lightweight cohort tracking approach for indie developers:
+
+### Step 1: Tag Your Ad Traffic at the Source
+
+Use UTM parameters or your ad platform's deep link parameters to tag every campaign, ad set, and ad. This lets you group installs by their acquisition source when you pull reports later.
+
+### Step 2: Export and Join Your Data Monthly
+
+Create a simple spreadsheet or Airtable base with these columns:
+- Cohort month
+- Ad platform / campaign
+- Total installs
+- Trial starts
+- Paid conversions
+- Monthly revenue per cohort (pull from RevenueCat, Superwall, or your billing system)
+- Cumulative spend for that cohort
+
+### Step 3: Calculate Rolling ROAS at 30/90/180 Days
+
+For each cohort, calculate ROAS at three checkpoints. Over time, you'll develop predictive benchmarks — for example, if your 30-day ROAS is typically 35% of your 180-day ROAS, you can use early data to project long-term performance.
+
+### Step 4: Feed Signals Back Into Your Ad Platforms
+
+Most ad platforms now support custom conversion events. Instead of optimizing for "install" or "trial start," create a custom event for "subscriber active at day 30." This trains the algorithm on higher-quality users rather than raw volume.
+
+---
+
+## Accounting for Churn in Your ROAS Model
+
+Churn is the silent killer of subscription ROAS calculations. A 5% monthly churn rate versus a 10% monthly churn rate produces dramatically different 12-month LTV figures.
+
+**Monthly churn impact on $9.99/month LTV:**
+
+- 5% monthly churn → ~$90 LTV
+- 10% monthly churn → ~$52 LTV
+- 20% monthly churn → ~$30 LTV
+
+If you're using a flat "average subscriber value" without accounting for churn curves, you'll overestimate LTV and misallocate budget. Pull your actual retention data by cohort and apply it to your ROAS calculations.
+
+A good starting benchmark: if you don't have enough data yet, assume 60% of monthly subscribers renew at month 2, 50% at month 3, and apply a steady 8-12% monthly churn curve from month 3 onward. Adjust as your real data matures.
+
+---
+
+## Benchmarks: What's a Good True ROAS for Subscription Apps?
+
+These targets assume 180-day measurement windows and net revenue after store fees:
+
+- **Under 1.0x** — Campaign is unprofitable even at 6 months. Pause and reassess
+- **1.0x–1.5x** — Breakeven to marginally profitable. Acceptable only if 12-month LTV justifies it
+- **1.5x–2.5x** — Healthy range for most indie subscription apps with modest margins
+- **2.5x–4.0x** — Strong performance; scale carefully while monitoring churn
+- **Above 4.0x** — Exceptional. Check your attribution for accuracy before dramatically increasing spend
+
+Remember: these are net revenue ROAS figures. If you're calculating on gross revenue (before store fees), multiply these benchmarks by approximately 1.2x to 1.35x.
+
+---
+
+## The One Metric Most Indie Developers Miss
+
+Beyond ROAS, track your **payback period** — the number of days it takes for ad spend on a cohort to be fully recovered by net subscription revenue.
+
+**Payback Period = CPI ÷ (Monthly Net Revenue per Subscriber)**
+
+If your CPI is $4.50 and your average subscriber generates $7.64/month in net revenue (after store fees and 20% churn adjustment), your payback period is about 18 days. That's excellent. If payback stretches past 90 days, you need either better targeting, a higher-converting onboarding, or a price adjustment.
+
+Payback period is especially useful for indie developers managing cash flow — knowing when you'll recoup spend helps you determine how aggressively you can scale without depleting runway.
+
+---
+
+## Start Measuring What Actually Matters
+
+Standard ROAS metrics will consistently mislead you when you're running a subscription app. The developers who scale profitably are the ones who build cohort-level revenue tracking, apply realistic churn assumptions, net out store fees, and measure performance over 90-180 day windows.
+
+You don't need expensive infrastructure to do this. A disciplined spreadsheet, RevenueCat's cohort reports, and a commitment to reviewing cohort data monthly is enough to make dramatically better campaign decisions than most indie competitors.
+
+**Ready to audit your current ROAS calculations?** Start by pulling your last three months of campaign spend alongside cohort revenue data at 30, 90, and 180 days. The difference between what your ad platform reports and what you actually earned will tell you everything about where your measurement gaps are — and where your real growth opportunities are hiding.
