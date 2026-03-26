@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Suspense } from "react";
 import { getBlogPosts } from "@/lib/blog";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CategoryTabs } from "@/components/blog/category-tabs";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -10,10 +9,24 @@ export const metadata: Metadata = {
     "ASO guides, case studies, and growth strategies for indie app developers. Learn how to rank higher on App Store and Google Play.",
 };
 
-export default function BlogPage() {
-  const posts = getBlogPosts();
+const FIXED_CATEGORIES = [
+  "All",
+  "ASO Fundamentals",
+  "Growth Hacks",
+  "Ad Fundamentals",
+  "Ad Networks",
+  "Paywall & Pricing",
+];
 
-  const categories = ["All", ...new Set(posts.map((p) => p.category))];
+export default function BlogPage() {
+  const posts = getBlogPosts().map(({ slug, title, description, category, date, readTime }) => ({
+    slug,
+    title,
+    description,
+    category,
+    date,
+    readTime,
+  }));
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -24,53 +37,9 @@ export default function BlogPage() {
         </p>
       </div>
 
-      {/* Categories */}
-      {categories.length > 1 && (
-        <div className="mt-10 flex flex-wrap justify-center gap-2">
-          {categories.map((cat) => (
-            <Badge
-              key={cat}
-              variant={cat === "All" ? "default" : "secondary"}
-              className={`cursor-pointer px-4 py-1.5 text-sm ${
-                cat === "All" ? "bg-amber-500 text-white hover:bg-amber-600" : ""
-              }`}
-            >
-              {cat}
-            </Badge>
-          ))}
-        </div>
-      )}
-
-      {/* Posts */}
-      {posts.length > 0 ? (
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <Card className="h-full transition-shadow hover:shadow-lg">
-                <CardHeader>
-                  <div className="flex items-center justify-between text-sm">
-                    <Badge variant="secondary">{post.category}</Badge>
-                    <span className="text-muted-foreground">{post.readTime}</span>
-                  </div>
-                  <CardTitle className="mt-3 text-lg leading-snug">{post.title}</CardTitle>
-                  <CardDescription className="line-clamp-3">{post.description}</CardDescription>
-                  <p className="mt-3 text-xs text-muted-foreground">
-                    {new Date(post.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </p>
-                </CardHeader>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <div className="mt-12 text-center text-muted-foreground">
-          <p>Articles coming soon. Stay tuned!</p>
-        </div>
-      )}
+      <Suspense fallback={<div className="mt-10 h-10" />}>
+        <CategoryTabs posts={posts} categories={FIXED_CATEGORIES} />
+      </Suspense>
 
       {/* Newsletter CTA */}
       <div className="mx-auto mt-20 max-w-xl rounded-2xl border bg-muted/30 p-8 text-center">

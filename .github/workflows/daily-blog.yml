@@ -1,0 +1,54 @@
+name: Daily Blog Post Generator
+
+on:
+  schedule:
+    # Runs every day at 07:00 UTC (10:00 Turkey time)
+    - cron: "0 7 * * *"
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  generate-posts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate blog posts
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-blog-posts.mjs
+
+      - name: Check for new files
+        id: check_changes
+        run: |
+          git add src/content/blog/
+          if git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push new posts
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "ASOHack Bot"
+          git config user.email "bot@asohack.com"
+          POSTS=$(git diff --staged --name-only | wc -l | tr -d ' ')
+          DATE=$(date +%Y-%m-%d)
+          MODE=$([ $(( $(date +%j) % 2 )) -eq 0 ] && echo "SEO" || echo "GEO")
+          git commit -m "chore: add ${POSTS} daily blog posts (${DATE}, ${MODE}-focused) [skip ci]"
+          git push
