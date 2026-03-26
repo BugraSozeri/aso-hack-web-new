@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
+import Link from "next/link";
 import { getBlogPosts } from "@/lib/blog";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CategoryTabs } from "@/components/blog/category-tabs";
 
 export const metadata: Metadata = {
@@ -18,15 +20,18 @@ const FIXED_CATEGORIES = [
   "Paywall & Pricing",
 ];
 
-export default function BlogPage() {
-  const posts = getBlogPosts().map(({ slug, title, description, category, date, readTime }) => ({
-    slug,
-    title,
-    description,
-    category,
-    date,
-    readTime,
-  }));
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
+  const { category = "All" } = await searchParams;
+  const allPosts = getBlogPosts();
+
+  const posts =
+    category === "All"
+      ? allPosts
+      : allPosts.filter((p) => p.category === category);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -37,9 +42,38 @@ export default function BlogPage() {
         </p>
       </div>
 
-      <Suspense fallback={<div className="mt-10 h-10" />}>
-        <CategoryTabs posts={posts} categories={FIXED_CATEGORIES} />
-      </Suspense>
+      <CategoryTabs categories={FIXED_CATEGORIES} current={category} />
+
+      {/* Posts */}
+      {posts.length > 0 ? (
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`}>
+              <Card className="h-full transition-shadow hover:shadow-lg">
+                <CardHeader>
+                  <div className="flex items-center justify-between text-sm">
+                    <Badge variant="secondary">{post.category}</Badge>
+                    <span className="text-muted-foreground">{post.readTime}</span>
+                  </div>
+                  <CardTitle className="mt-3 text-lg leading-snug">{post.title}</CardTitle>
+                  <CardDescription className="line-clamp-3">{post.description}</CardDescription>
+                  <p className="mt-3 text-xs text-muted-foreground">
+                    {new Date(post.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                </CardHeader>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-12 text-center text-muted-foreground">
+          <p>No articles in this category yet. Check back soon!</p>
+        </div>
+      )}
 
       {/* Newsletter CTA */}
       <div className="mx-auto mt-20 max-w-xl rounded-2xl border bg-muted/30 p-8 text-center">
