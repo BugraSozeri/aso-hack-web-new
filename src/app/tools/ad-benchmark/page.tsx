@@ -221,8 +221,7 @@ export default function AdBenchmarkPage() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-3">
-          <Badge className="bg-amber-500/10 text-amber-600 dark:text-amber-400">Pro</Badge>
-          <Badge variant="secondary">Free Preview</Badge>
+          <Badge className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30">Pro Tool</Badge>
         </div>
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Ad Benchmark Analyzer</h1>
         <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
