@@ -54,7 +54,7 @@ export async function POST(request: Request) {
   }
 
   const systemPrompt = getMasterPrompt(tool);
-  const userMessage = buildUserMessage(tool, data);
+  const userContent = buildUserContent(tool, data);
 
   // Stream the response
   // Increment usage before streaming (count the attempt)
@@ -64,7 +64,7 @@ export async function POST(request: Request) {
     model: "claude-sonnet-4-6",
     max_tokens: 1500,
     system: systemPrompt,
-    messages: [{ role: "user", content: userMessage }],
+    messages: [{ role: "user", content: userContent }],
   });
 
   const encoder = new TextEncoder();
@@ -93,6 +93,39 @@ export async function POST(request: Request) {
       "X-Content-Type-Options": "nosniff",
     },
   });
+}
+
+import type { MessageParam } from "@anthropic-ai/sdk/resources/messages.js";
+type UserContent = MessageParam["content"];
+
+function buildUserContent(tool: string, data: Record<string, unknown>): UserContent {
+  if (tool === "screenshot-lab") {
+    const images = (data.images as Array<{ base64: string; mediaType: string }> | undefined) ?? [];
+    const imageBlocks = images.slice(0, 6).map((img) => ({
+      type: "image" as const,
+      source: {
+        type: "base64" as const,
+        media_type: img.mediaType as "image/jpeg" | "image/png" | "image/webp" | "image/gif",
+        data: img.base64,
+      },
+    }));
+
+    const textBlock = {
+      type: "text" as const,
+      text: `Please analyze these ${images.length} app screenshot(s) and provide your expert creative direction:
+
+**App Name:** ${data.appName || "Not provided"}
+**Platform:** ${data.platform === "android" ? "Google Play" : "iOS App Store"}
+**Category:** ${data.category || "Not specified"}
+**Number of screenshots:** ${images.length}
+
+Please provide your full screenshot analysis following the output format in your instructions.`,
+    };
+
+    return [...imageBlocks, textBlock];
+  }
+
+  return buildUserMessage(tool, data);
 }
 
 function buildUserMessage(tool: string, data: Record<string, unknown>): string {

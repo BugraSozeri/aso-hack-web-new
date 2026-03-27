@@ -88,9 +88,9 @@ const tools = [
       "Upload your app store screenshots and get AI-powered feedback on text readability, feature highlighting, color contrast, and CTA placement.",
     icon: ImageIcon,
     href: "/tools/screenshot-lab",
-    badge: "Pro",
-    badgeColor: "bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-400",
-    features: ["AI-powered analysis", "Best practice scoring", "Improvement suggestions"],
+    badge: "Free",
+    badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400",
+    features: ["AI vision analysis", "Search preview", "Conversion tips"],
   },
   {
     name: "Ad Analytics Calculator",
