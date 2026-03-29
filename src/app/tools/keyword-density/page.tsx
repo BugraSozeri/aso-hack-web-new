@@ -131,7 +131,7 @@ export default function KeywordDensityPage() {
   };
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-4 pt-16 pb-32 sm:px-6 lg:px-8">
       <Link
         href="/tools"
         className="mb-8 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
@@ -178,7 +178,7 @@ export default function KeywordDensityPage() {
       </div>
 
       {/* Input Fields */}
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-6 lg:grid-cols-2 min-h-[600px]">
         <div className="space-y-4">
           {/* Title */}
           <div>
@@ -449,7 +449,7 @@ export default function KeywordDensityPage() {
               </Card>
             </>
           ) : (
-            <div className="flex h-full items-center justify-center rounded-lg border border-dashed p-12 text-center">
+            <div className="flex min-h-[200px] items-center justify-center rounded-lg border border-dashed p-12 text-center">
               <div>
                 <Search className="mx-auto h-10 w-10 text-muted-foreground/40" />
                 <p className="mt-4 font-medium">Paste your app metadata</p>
