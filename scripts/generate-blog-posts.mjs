@@ -198,6 +198,10 @@ Then write the full MDX content (no extra \`\`\` wrappers — just raw markdown)
     return null;
   }
 
+  // Sanitize MDX: escape bare < that aren't valid HTML/JSX tags
+  // e.g. "<$5K", "<50,000", "<something" that would break the MDX parser
+  content = content.replace(/<(?![a-zA-Z\/!])/g, "&lt;");
+
   const filename = `${slug}.mdx`;
   const filepath = path.join(CONTENT_DIR, filename);
   fs.writeFileSync(filepath, content.trim() + "\n");
