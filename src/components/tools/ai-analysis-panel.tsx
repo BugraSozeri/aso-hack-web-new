@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import DOMPurify from "isomorphic-dompurify";
 import Link from "next/link";
 import { Sparkles, Loader2, AlertCircle, ChevronDown, ChevronUp, Lock, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -51,7 +52,13 @@ function incrementUsage(): void {
 // ─── Markdown renderer ────────────────────────────────────────────────────────
 
 function renderMarkdown(text: string): string {
-  return text
+  // Escape raw HTML first to prevent injection, then apply safe markdown transforms
+  const escaped = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  const html = escaped
     .replace(/^## (.+)$/gm, '<h2 class="text-base font-semibold mt-5 mb-2 first:mt-0">$1</h2>')
     .replace(/^### (.+)$/gm, '<h3 class="text-sm font-semibold mt-4 mb-1.5">$1</h3>')
     .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold">$1</strong>')
@@ -61,6 +68,11 @@ function renderMarkdown(text: string): string {
     .replace(/^(?!<)(.+)$/gm, '<p class="my-1 leading-relaxed">$1</p>')
     .replace(/<p class="[^"]*"><\/p>/g, '')
     .replace(/^---$/gm, '<hr class="my-3 border-border" />');
+
+  return DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: ["h2", "h3", "strong", "code", "p", "div", "span", "hr"],
+    ALLOWED_ATTR: ["class"],
+  });
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────

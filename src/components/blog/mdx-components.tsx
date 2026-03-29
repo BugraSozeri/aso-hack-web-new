@@ -38,15 +38,26 @@ export const mdxComponents: MDXComponents = {
     </li>
   ),
   a: ({ href, children, ...props }) => {
-    if (href?.startsWith("/")) {
+    // Block javascript:, data:, vbscript: and protocol-relative URLs (//attacker.com)
+    const isSafe = (url?: string) => {
+      if (!url) return false;
+      const lower = url.toLowerCase().trim();
+      if (/^(javascript|data|vbscript):/.test(lower)) return false;
+      return true;
+    };
+    const isInternal = href?.startsWith("/") && !href.startsWith("//");
+
+    if (!isSafe(href)) return <span>{children}</span>;
+
+    if (isInternal) {
       return (
-        <Link href={href} className="font-medium text-amber-500 underline underline-offset-4 hover:text-amber-400 dark:text-amber-400" {...props}>
+        <Link href={href!} className="font-medium text-amber-500 underline underline-offset-4 hover:text-amber-400 dark:text-amber-400" {...props}>
           {children}
         </Link>
       );
     }
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="font-medium text-amber-500 underline underline-offset-4 hover:text-amber-400 dark:text-amber-400" {...props}>
+      <a href={href} target="_blank" rel="noopener noreferrer nofollow" className="font-medium text-amber-500 underline underline-offset-4 hover:text-amber-400 dark:text-amber-400" {...props}>
         {children}
       </a>
     );

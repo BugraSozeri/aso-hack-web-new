@@ -6,6 +6,12 @@ const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
+// Sanitize user-supplied strings before interpolating into prompts
+function s(value: unknown, maxLen = 500): string {
+  if (value === null || value === undefined) return "";
+  return String(value).replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, "").slice(0, maxLen);
+}
+
 // In-memory monthly rate limiter: key = "ip:YYYY-MM", value = usage count
 // Resets automatically as months change; cleared on server restart (acceptable for now)
 const usageMap = new Map<string, number>();
@@ -48,7 +54,7 @@ export async function POST(request: Request) {
 
   if (!process.env.ANTHROPIC_API_KEY) {
     return new Response(
-      JSON.stringify({ error: "AI analysis is not configured. Please add ANTHROPIC_API_KEY." }),
+      JSON.stringify({ error: "Service temporarily unavailable." }),
       { status: 503, headers: { "Content-Type": "application/json" } }
     );
   }
@@ -133,29 +139,29 @@ function buildUserMessage(tool: string, data: Record<string, unknown>): string {
     case "listing-analyzer":
       return `Please analyze this app listing and provide your expert recommendations:
 
-**Platform:** ${data.platform || "iOS"}
-**App Title:** ${data.title || "Not provided"} (${String(data.title || "").length} chars)
-**Subtitle/Short Description:** ${data.subtitle || "Not provided"} (${String(data.subtitle || "").length} chars)
-**Keyword Field (iOS):** ${data.keywords || "Not provided"} (${String(data.keywords || "").length} chars)
-**Description:** ${data.description ? `${String(data.description).substring(0, 500)}... [${String(data.description).length} total chars]` : "Not provided"}
-**Category:** ${data.category || "Not specified"}
-**Rating:** ${data.rating || "N/A"} (${data.ratingCount || 0} ratings)
-**ASO Score:** ${data.score || "N/A"}/100
+**Platform:** ${s(data.platform) || "iOS"}
+**App Title:** ${s(data.title) || "Not provided"} (${s(data.title).length} chars)
+**Subtitle/Short Description:** ${s(data.subtitle) || "Not provided"} (${s(data.subtitle).length} chars)
+**Keyword Field (iOS):** ${s(data.keywords) || "Not provided"} (${s(data.keywords).length} chars)
+**Description:** ${data.description ? `${s(data.description, 500)}... [${s(data.description, 5000).length} total chars]` : "Not provided"}
+**Category:** ${s(data.category) || "Not specified"}
+**Rating:** ${s(data.rating) || "N/A"} (${s(data.ratingCount) || 0} ratings)
+**ASO Score:** ${s(data.score) || "N/A"}/100
 
 Please provide your full analysis following the output format in your instructions.`;
 
     case "keyword-density":
       return `Please analyze this app metadata keyword optimization:
 
-**Platform:** ${data.platform || "iOS"}
-**Title:** ${data.title || ""}
-**Subtitle:** ${data.subtitle || ""}
-**Keywords Field:** ${data.keywords || ""}
-**Description length:** ${data.descriptionLength || 0} characters
+**Platform:** ${s(data.platform) || "iOS"}
+**Title:** ${s(data.title)}
+**Subtitle:** ${s(data.subtitle)}
+**Keywords Field:** ${s(data.keywords)}
+**Description length:** ${Number(data.descriptionLength) || 0} characters
 **Top keywords found:** ${JSON.stringify(data.topKeywords || [])}
 **Bigrams found:** ${JSON.stringify(data.bigrams || [])}
 **Character limits:** ${JSON.stringify(data.charLimits || {})}
-**App category (if known):** ${data.category || "Not specified"}
+**App category (if known):** ${s(data.category) || "Not specified"}
 
 Please provide your keyword optimization recommendations.`;
 
@@ -190,14 +196,14 @@ Please provide your mobile growth strategy recommendations.`;
     case "aso-audit":
       return `Please conduct a comprehensive ASO audit for this app:
 
-**Platform:** ${data.platform || "iOS"}
-**App Title:** ${data.title || ""} (${String(data.title || "").length} chars)
-**Subtitle:** ${data.subtitle || ""} (${String(data.subtitle || "").length} chars)
-**Keyword Field:** ${data.keywords || ""} (${String(data.keywords || "").length} chars)
-**Description:** ${data.description ? `${String(data.description).substring(0, 600)}... [${String(data.description).length} total chars]` : "Not provided"}
-**Category:** ${data.category || "Not specified"}
-**Rating:** ${data.rating || "N/A"} avg (${data.ratingCount || 0} ratings)
-**ASO Score:** ${data.score || "N/A"}/100
+**Platform:** ${s(data.platform) || "iOS"}
+**App Title:** ${s(data.title)} (${s(data.title).length} chars)
+**Subtitle:** ${s(data.subtitle)} (${s(data.subtitle).length} chars)
+**Keyword Field:** ${s(data.keywords)} (${s(data.keywords).length} chars)
+**Description:** ${data.description ? `${s(data.description, 600)}... [${s(data.description, 5000).length} total chars]` : "Not provided"}
+**Category:** ${s(data.category) || "Not specified"}
+**Rating:** ${s(data.rating) || "N/A"} avg (${Number(data.ratingCount) || 0} ratings)
+**ASO Score:** ${s(data.score) || "N/A"}/100
 **Top Keywords:** ${JSON.stringify(data.topKeywords || [])}
 
 Please provide your full ASO audit report.`;
@@ -229,22 +235,23 @@ Please provide your full benchmark analysis and strategy following the output fo
       const competitors = (data.competitors as Array<Record<string, string>> | undefined) ?? [];
       const competitorText = competitors
         .filter((c) => c.name)
+        .slice(0, 5)
         .map((c, i) => `
-Competitor ${i + 1}: ${c.name}
-- Rating: ${c.rating || "N/A"} (${c.reviewCount || "N/A"} reviews)
-- Title/Keywords: ${c.titleKeywords || "N/A"}
-- Key Features / Notes: ${c.notes || "N/A"}`)
+Competitor ${i + 1}: ${s(c.name)}
+- Rating: ${s(c.rating) || "N/A"} (${s(c.reviewCount) || "N/A"} reviews)
+- Title/Keywords: ${s(c.titleKeywords) || "N/A"}
+- Key Features / Notes: ${s(c.notes, 200) || "N/A"}`)
         .join("\n");
 
       return `Please analyze this competitive landscape and provide strategic recommendations:
 
 **My App:**
-- Name: ${data.appName || "Not provided"}
-- Category: ${data.category || "Not specified"}
-- Platform: ${data.platform === "android" ? "Google Play" : "iOS App Store"}
-- Rating: ${data.myRating || "N/A"} (${data.myReviewCount || "N/A"} reviews)
-- Title/Keywords in listing: ${data.myTitleKeywords || "N/A"}
-- Key differentiators / features: ${data.myNotes || "N/A"}
+- Name: ${s(data.appName) || "Not provided"}
+- Category: ${s(data.category) || "Not specified"}
+- Platform: ${s(data.platform) === "android" ? "Google Play" : "iOS App Store"}
+- Rating: ${s(data.myRating) || "N/A"} (${s(data.myReviewCount) || "N/A"} reviews)
+- Title/Keywords in listing: ${s(data.myTitleKeywords) || "N/A"}
+- Key differentiators / features: ${s(data.myNotes, 300) || "N/A"}
 
 **Competitors (${competitors.filter((c) => c.name).length}):**
 ${competitorText || "No competitors provided"}
@@ -255,31 +262,31 @@ Please provide your full competitive intelligence report following the output fo
     case "keyword-explorer":
       return `Please research keywords for this app and provide comprehensive keyword opportunities:
 
-**Seed Keyword:** ${data.seedKeyword || "Not provided"}
-**App Category:** ${data.category || "Not specified"}
-**Platform:** ${data.platform === "android" ? "Google Play" : "iOS App Store"}
-**App Name:** ${data.appName || "Not provided"}
-**App Description / Context:** ${data.appContext || "Not provided"}
-**Current Title Keywords:** ${data.titleKeywords || "Not provided"}
-**Competitor Apps (if known):** ${data.competitors || "Not provided"}
+**Seed Keyword:** ${s(data.seedKeyword) || "Not provided"}
+**App Category:** ${s(data.category) || "Not specified"}
+**Platform:** ${s(data.platform) === "android" ? "Google Play" : "iOS App Store"}
+**App Name:** ${s(data.appName) || "Not provided"}
+**App Description / Context:** ${s(data.appContext, 400) || "Not provided"}
+**Current Title Keywords:** ${s(data.titleKeywords) || "Not provided"}
+**Competitor Apps (if known):** ${s(data.competitors, 200) || "Not provided"}
 
 Please provide your full keyword research report following the output format in your instructions.`;
 
     case "review-analyzer":
       return `Please analyze these app reviews and provide your expert recommendations:
 
-**App Name:** ${data.appName || "Not provided"}
-**Platform:** ${data.platform || "iOS"}
-**Category:** ${data.category || "Not specified"}
-**Total Reviews Analyzed:** ${data.reviewCount || 0}
-**Average Sentiment Score (client-side):** ${data.sentimentSummary || "N/A"}
-**Positive Reviews:** ${data.positiveCount || 0} (${data.positivePercent || 0}%)
-**Neutral Reviews:** ${data.neutralCount || 0} (${data.neutralPercent || 0}%)
-**Negative Reviews:** ${data.negativeCount || 0} (${data.negativePercent || 0}%)
+**App Name:** ${s(data.appName) || "Not provided"}
+**Platform:** ${s(data.platform) || "iOS"}
+**Category:** ${s(data.category) || "Not specified"}
+**Total Reviews Analyzed:** ${Number(data.reviewCount) || 0}
+**Average Sentiment Score (client-side):** ${s(data.sentimentSummary) || "N/A"}
+**Positive Reviews:** ${Number(data.positiveCount) || 0} (${Number(data.positivePercent) || 0}%)
+**Neutral Reviews:** ${Number(data.neutralCount) || 0} (${Number(data.neutralPercent) || 0}%)
+**Negative Reviews:** ${Number(data.negativeCount) || 0} (${Number(data.negativePercent) || 0}%)
 **Top Words in Reviews:** ${JSON.stringify(data.topWords || [])}
 
 **Full Review Text:**
-${data.reviews || "No reviews provided"}
+${s(data.reviews, 6000) || "No reviews provided"}
 
 Please provide your full review analysis report following the output format in your instructions.`;
 
