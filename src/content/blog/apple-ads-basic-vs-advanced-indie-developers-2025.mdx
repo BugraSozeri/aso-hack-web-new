@@ -1,0 +1,144 @@
+---
+title: "Apple Ads in 2025: Basic vs. Advanced — Which One Should Indie Developers Start With?"
+description: "Apple rebranded Search Ads in 2025. Learn whether Basic or Advanced Apple Ads fits your indie app budget, goals, and technical comfort level."
+category: "Ad Fundamentals"
+date: "2026-03-28"
+author: "ASOHack Team"
+published: true
+---
+
+Apple quietly rewrote the rulebook in April 2025: Search Ads became **Apple Ads**, gained new placements across the App Store, and invalidated nearly every beginner campaign guide on the internet. According to SplitMetrics and AppSamurai, the single biggest point of confusion for developers just starting out isn't bidding strategy or keyword research — it's the choice between **Basic and Advanced campaign types**. Get this wrong and you'll either overspend on automation you don't need, or drown in complexity before you see your first conversion.
+
+This guide cuts through the noise and gives you a decision framework built for indie developers with real budget constraints and limited time.
+
+---
+
+## What Changed When Apple Rebranded to Apple Ads in April 2025
+
+The rebrand wasn't cosmetic. Apple Ads now covers a wider ecosystem of placements:
+
+- **Search Results** — the original placement, ads appear above organic results
+- **Search tab** — ads surface before a user types anything
+- **Today tab** — premium discovery placement on the App Store home screen
+- **Product pages** — ads shown on competitor or related app product pages
+- **In-app placements** — Apple's expanding network inside third-party apps (still rolling out)
+
+The Basic vs. Advanced distinction still exists, but it now determines how much control you have across **all of these placements**, not just Search Results. That context matters enormously when you're choosing where to start.
+
+---
+
+## Apple Ads Basic: What You're Actually Getting
+
+Basic is Apple's fully automated campaign type. You set a monthly budget cap, a target cost-per-install (tCPI), and Apple handles everything else — keyword selection, bidding, audience targeting, and placement distribution.
+
+### What Basic controls for you
+
+- Keyword discovery and matching
+- Bid adjustments in real time
+- Audience segmentation (new users, returning users, etc.)
+- Placement selection across all Apple Ads surfaces
+
+### Budget thresholds for Basic
+
+Apple's minimum monthly budget for Basic campaigns is **$50/month**, making it accessible for developers at the earliest stages. Most practitioners recommend a minimum of **$300–$500/month** to give Apple's algorithm enough spend data to optimize — anything below that and the machine learning model doesn't have enough signal to converge.
+
+### The real tradeoff: data opacity
+
+You don't see which keywords drove installs. You don't know which placements are converting. You get aggregate install counts and your effective CPI. That's it. If you're trying to feed learnings back into your ASO strategy or understand your user acquisition funnel, Basic gives you almost nothing to work with.
+
+---
+
+## Apple Ads Advanced: What You're Actually Getting
+
+Advanced is the manual-control campaign type. You build campaigns, ad groups, and keyword lists yourself. You set match types (exact, broad, search match). You control bids at the keyword level. You can run Creative Sets to test different app store assets. You get impression share data, search term reports, and cohorted conversion metrics.
+
+### What Advanced unlocks
+
+- Keyword-level bidding and reporting
+- Negative keyword lists (critical for wasted spend control)
+- Search term reports showing what users actually typed
+- Audience refinement by device, customer type, and demographics
+- Creative Set testing against your product page assets
+- Placement-specific campaigns (you can isolate Today tab vs. Search Results spend)
+
+### Budget thresholds for Advanced
+
+There's no enforced minimum, but running Advanced on under **$500/month** creates a different problem: you won't accumulate enough data per ad group to make statistically meaningful bid decisions. SplitMetrics' benchmark data suggests that at **$1,000–$2,000/month**, Advanced campaigns start returning actionable keyword-level insights within 2–3 weeks of launch.
+
+---
+
+## Basic vs. Advanced: Side-by-Side Comparison
+
+| Feature | Basic | Advanced |
+|---|---|---|
+| Minimum practical budget | $300–$500/month | $1,000–$2,000/month |
+| Keyword control | None (Apple chooses) | Full (you build lists) |
+| Bid control | None (tCPI target only) | Keyword-level CPT bids |
+| Placement control | Automatic distribution | Campaign-level isolation |
+| Negative keywords | Not available | Available |
+| Search term reports | Not available | Available |
+| Creative Set testing | Not available | Available |
+| Setup time | Under 10 minutes | 2–6 hours (initial build) |
+| Ongoing management | Near zero | Weekly to daily |
+| ASO feedback loop | Weak | Strong |
+| Recommended for | MVP validation, budget under $500/month | Scale, competitive categories, data-driven teams |
+
+---
+
+## The Automation Tradeoff No One Explains Clearly
+
+Basic sounds like a gift: zero management overhead, Apple optimizes for your tCPI goal, you install more apps. The problem is that Apple's algorithm optimizes for **install volume**, not LTV, not subscription conversion, not Day-30 retention. If your app monetizes through a paywall or a subscription, Basic is optimizing for a metric that may not correlate with revenue at all.
+
+Superwall's internal data (shared in their 2024 benchmarking report) shows that subscription apps frequently see a significant gap between paid install CPI and the actual cost-per-subscriber — sometimes **3x to 5x** higher than the tCPI target — because the installs generated by fully automated campaigns skew toward low-intent users.
+
+Advanced lets you bid higher on exact-match keywords where users signal strong intent ("best budget tracker app," "calorie counter free") and bid lower or exclude broad terms that drive installs without conversion.
+
+---
+
+## Decision Framework: Which One Should You Start With?
+
+Answer these four questions honestly:
+
+**1. Is your app live with at least 10–15 organic reviews?**
+If not, paid traffic will amplify a weak product page. Fix ASO first.
+
+**2. What is your monthly Apple Ads budget?**
+- Under $300: Neither — your budget won't generate enough data to learn from.
+- $300–$800: Start with Basic. Validate that paid installs convert before investing in Advanced infrastructure.
+- $800+: Go directly to Advanced. You have enough budget to generate keyword-level signal within your first billing cycle.
+
+**3. Do you have a defined monetization event to optimize toward?**
+If you're tracking a paywall conversion, subscription start, or in-app purchase, you need Advanced so you can match keyword intent to downstream revenue. Basic won't give you the data to do this.
+
+**4. Can you invest 2–3 hours per week in campaign management?**
+Advanced requires it. If you're building solo and UA is a side task, Basic is a legitimate choice for the first 60–90 days — but plan the migration.
+
+---
+
+## The Migration Path Most Guides Skip
+
+Don't treat Basic and Advanced as permanent choices. The optimal indie developer path looks like this:
+
+1. **Months 1–2 (Basic):** Validate that your app converts paid installs at an acceptable CPI. Confirm your product page doesn't leak traffic. Budget: $300–$500/month.
+2. **Month 3 (Transition):** Export your Basic campaign data. Note your effective CPI and monthly install volume. Build your first Advanced campaign in parallel with a $200–$300 test budget.
+3. **Month 4+ (Advanced-primary):** Once you've identified 10–20 exact-match keywords that convert, pause Basic and scale Advanced. Use search term reports to continuously prune and expand your keyword list.
+
+This path keeps risk low and ensures you're not flying blind when you start spending real money.
+
+---
+
+## One More Thing: The New Placements Change the Math
+
+With Apple Ads expanding to in-app placements and the Today tab, Advanced campaigns now let you isolate spend by placement and measure performance independently. Running a $50/day Today tab campaign alongside a $50/day Search Results campaign gives you comparative CPI data that Basic will never surface.
+
+For apps with strong visual creative — fitness apps, photo editors, games — the Today tab placement may outperform Search Results on a CPI basis. You'll never know if you're on Basic.
+
+---
+
+## Start Here: Your Next Action
+
+If you're reading this without an active Apple Ads campaign, do this today: open App Store Connect, navigate to Apple Ads, and build a Basic campaign with a $300/month budget and a tCPI 20% above your acceptable install cost threshold. Run it for 30 days. Measure installs against your downstream conversion event (trial start, paywall hit, purchase).
+
+That 30-day dataset is the foundation your Advanced campaign will be built on. Don't skip it.
+
+**→ Need help structuring your first keyword list for Advanced? Check out our [Apple Ads keyword research guide for indie developers](#) before you make the switch.**
