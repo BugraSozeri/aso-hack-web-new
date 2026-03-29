@@ -141,8 +141,8 @@ export default function KeywordDensityPage() {
       </Link>
 
       <div className="mb-10">
-        <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100 dark:bg-amber-950">
+        <div className="flex items-start gap-3">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-100 dark:bg-amber-950">
             <Search className="h-6 w-6 text-amber-500 dark:text-amber-400" />
           </div>
           <div>
