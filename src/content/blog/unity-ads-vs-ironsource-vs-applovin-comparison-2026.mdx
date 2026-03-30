@@ -1,0 +1,121 @@
+---
+title: "Unity Ads vs IronSource vs AppLovin: Which Mobile Ad Network Performs Better in 2026"
+description: "A head-to-head breakdown of the three dominant mobile ad networks for indie app developers — fill rates, eCPMs, SDK complexity, and which one to start with."
+category: "Ad Networks"
+date: "2026-03-29"
+author: "ASOHack Team"
+published: true
+---
+
+## Unity Ads vs IronSource vs AppLovin: Which Mobile Ad Network Performs Better in 2026
+
+For indie app developers monetizing with rewarded video or interstitial ads, three networks dominate the conversation: Unity Ads, IronSource (now part of Unity), and AppLovin's MAX mediation platform. The merger of Unity and IronSource in 2023 changed the landscape considerably — but the competitive dynamics are still worth understanding.
+
+Here's what you need to know to make the right call for your app.
+
+---
+
+## Background: The Merger Changed Everything
+
+Unity acquired IronSource in November 2022 and merged the ad businesses. Today, "Unity Ads" effectively includes what was previously IronSource's ad network — they share demand sources and increasingly share SDK infrastructure.
+
+That said, many developers still integrate them separately (especially those using mediation platforms like MAX by AppLovin or Bidmachine), because the demand overlap isn't complete and running both can yield higher fill rates.
+
+---
+
+## AppLovin MAX: The Mediation Layer
+
+AppLovin MAX is both an ad network and a mediation platform. As mediation, it runs auctions across 30+ networks (including Unity/IronSource, Google AdMob, Meta Audience Network, and many others) to maximize eCPM.
+
+This is the key distinction: **MAX isn't just one network, it's a layer that sits above multiple networks.**
+
+For most indie developers, the question isn't "Unity vs AppLovin" — it's "should I use MAX as my mediation layer, and which networks should I include in my waterfall?"
+
+---
+
+## eCPM Benchmarks by Format (2026)
+
+These are approximate global averages. Actual eCPMs vary significantly by geography, app category, and quality of user.
+
+**Rewarded Video eCPM (Tier 1 — US/UK/AU/CA):**
+- Unity/IronSource: $12–$25
+- AppLovin (direct): $15–$30
+- Meta Audience Network: $18–$35
+- Google AdMob: $10–$22
+
+**Interstitial eCPM (Tier 1):**
+- Unity/IronSource: $5–$12
+- AppLovin: $6–$15
+- Meta: $8–$18
+
+**Banner eCPM (Tier 1):**
+- All networks: $0.30–$1.50 (low value, avoid unless volume is very high)
+
+The wide ranges reflect that eCPM is heavily influenced by your user base geography and engagement profile. A hyper-casual game with global users will see very different numbers than a productivity app with mostly US users.
+
+---
+
+## Fill Rate: The Often-Ignored Metric
+
+High eCPM means nothing if the network doesn't have an ad to show. Fill rate (the percentage of ad requests that return a filled ad) varies by network and region.
+
+Unity/IronSource: 85-95% fill in Tier 1 countries, drops to 40-70% in Tier 3.
+AppLovin MAX (mediated): 95%+ in Tier 1 because it waterfalls across many networks.
+Direct AppLovin: 80-90% Tier 1, similar drop in Tier 3.
+
+This is the primary argument for mediation: when your direct Unity integration returns no fill, MAX falls through to the next network and almost always finds a buyer.
+
+---
+
+## SDK Size and Integration Complexity
+
+**Unity Ads SDK:** ~8MB added to app size. Integration is straightforward if your app already uses the Unity game engine. For native iOS/Android apps, it's a separate SDK with its own complexity.
+
+**IronSource (LevelPlay) SDK:** ~6MB. Integration has historically been more complex — the dashboard and reporting tools have a steeper learning curve.
+
+**AppLovin MAX SDK:** ~4MB base, plus each adapter for additional networks adds ~1-2MB. Integration is well-documented; the mediation setup takes a few hours but once running is mostly automated.
+
+For a native app with no Unity game engine dependency, the integration complexity ranking from easiest to hardest is typically: AdMob &gt; MAX &gt; AppLovin direct &gt; Unity/IronSource.
+
+---
+
+## Revenue Share
+
+No network publishes exact revenue share percentages publicly, but industry norms based on developer reports:
+
+- Google AdMob: ~60% to publisher (40% Google rev share)
+- Meta: ~68% to publisher
+- AppLovin MAX: ~60-70% to publisher (varies by negotiated deal)
+- Unity/IronSource: ~60-65% to publisher
+
+At scale (&gt;$50K/month), these numbers become negotiable. Direct deals with account managers can improve rev share by 5-10%.
+
+---
+
+## Which Should Indie Developers Start With?
+
+**If you're just starting monetization (&lt;$1K/month):** Start with Google AdMob. Best documentation, easiest setup, reliable payments. Add Meta Audience Network as a second network.
+
+**If you're growing ($1K–$10K/month):** Add AppLovin MAX as your mediation layer. It runs your existing AdMob and Meta demand alongside AppLovin's own network in a unified auction, almost always increasing revenue 15-30% over a single-network setup.
+
+**If you're scaling ($10K+/month):** Run MAX mediation with 5+ networks including Unity/IronSource. At this level, even marginal eCPM improvements are meaningful. Work with an account manager at each major network to negotiate floor prices.
+
+---
+
+## The 2026 Consideration: Privacy Changes
+
+Apple's ATT (App Tracking Transparency) framework continues to suppress eCPMs for apps without strong first-party data. Networks that rely heavily on IDFA-based targeting (Meta, to some extent AppLovin) see significantly lower eCPMs on iOS post-ATT opt-out.
+
+Unity/IronSource has historically been stronger for contextual monetization (not user tracking), making it somewhat more resilient on iOS for apps with lower ATT consent rates.
+
+If your iOS user base has &lt;30% ATT opt-in, Unity/IronSource may outperform Meta on that segment specifically.
+
+---
+
+## Bottom Line
+
+For most indie developers, the correct answer is: **AppLovin MAX as mediation, with Unity/IronSource and Google AdMob as primary demand partners.**
+
+Running MAX doesn't mean you're "choosing AppLovin over Unity" — you're using AppLovin's infrastructure to run a fair auction between multiple networks including Unity. The incremental revenue from mediation almost always justifies the extra setup time.
+
+Start simple, add complexity as revenue justifies it.

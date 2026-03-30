@@ -1,0 +1,113 @@
+---
+title: "App Store Connect A/B Testing: What You Can Test and What Actually Moves the Needle"
+description: "A practical guide to App Store Connect's product page optimization feature. Learn which elements to test, how to read results, and what indie developers are seeing in 2026."
+category: "ASO Fundamentals"
+date: "2026-03-29"
+author: "ASOHack Team"
+published: true
+---
+
+## App Store Connect A/B Testing: What You Can Test and What Actually Moves the Needle
+
+Apple's Product Page Optimization (PPO) feature lets you A/B test your App Store listing natively — no third-party tools, no traffic routing hacks. Yet most indie developers either ignore it entirely or run tests that don't produce meaningful results.
+
+This guide covers exactly how to run tests that actually teach you something.
+
+---
+
+## What You Can Test with PPO
+
+App Store Connect lets you test three elements:
+
+**1. App Icon**
+Up to three alternate icons. This is consistently the highest-impact element to test — the icon appears in search results, browse, and the listing itself.
+
+**2. Screenshots and App Previews**
+You can test entirely different screenshot sets. Different messaging angles, different color schemes, different ordering — all fair game.
+
+**3. App Name**
+The display name shown on the listing page. Note: this does NOT affect your actual app title in search rankings. It's purely a conversion test.
+
+You cannot test the description, subtitle, or keywords through PPO.
+
+---
+
+## How Traffic Allocation Works
+
+Apple splits impressions between your control and treatment(s). You choose the split — 33% to each variant if running two treatments, for example.
+
+Important: the split is randomized by device, not by user session. A user who sees your treatment won't necessarily see it again on a second visit (though Apple does try to show them the same version for consistency).
+
+Minimum recommendation: run tests for **at least 7 days**, ideally 14-30 days. Conversion data has natural variance from day-of-week patterns — short tests produce unreliable winners.
+
+---
+
+## Reading Results: What "Improvement" Actually Means
+
+Apple shows you "conversion rate improvement" as a percentage. This compares the install rate of the treatment vs. the control.
+
+What counts as significant?
+
+- **&lt;5% improvement**: Probably noise unless you have massive volume.
+- **5-15% improvement**: Meaningful if you have &gt;1,000 impressions per variant.
+- **&gt;15% improvement**: Strong signal — roll out the winner.
+
+Apple shows a confidence indicator (low / medium / high). Don't declare a winner until confidence reaches "high" OR you've accumulated &gt;5,000 impressions per variant.
+
+---
+
+## What Actually Moves the Needle in 2026
+
+Based on patterns from indie developers sharing results in communities like /r/iOSProgramming and the Liftoff Mobile benchmarks:
+
+**Icons:** Lifestyle and utility apps see 10-25% CVR swings from icon tests. The biggest driver is emotional resonance — does the icon feel like it's "for me"? Abstract icons consistently lose to ones that clearly show the app's purpose.
+
+**Screenshots:** Messaging angle tests (benefit-focused vs. feature-focused vs. social proof) tend to outperform visual style tests. The first screenshot is the only one that matters in list view — optimize it ruthlessly.
+
+**App Name:** Name tests rarely produce double-digit lifts. Where they do help: adding a tagline that reinforces the value prop (e.g., "Calm Sleep" → "Calm Sleep — Relax & Rest").
+
+---
+
+## The Test That Most Developers Should Run First
+
+If you haven't run any PPO test, start with your icon.
+
+Why? The icon is shown in search results before a user ever visits your listing. It's the first filter. A 15% improvement in icon click-through compounds across every discovery surface — browse, search, Today tab recommendations.
+
+For the test: keep one variant focused on clarity (shows what the app does), one on emotion (evokes how the app makes you feel). See which resonates more with your category.
+
+---
+
+## Common Mistakes to Avoid
+
+**Testing too many things at once.** You can run one test at a time per product page. Don't waste a cycle on minor color changes — test meaningfully different hypotheses.
+
+**Stopping early.** A treatment that looks 20% better after day two often regresses to 8% by day 14 as the novelty effect wears off. Wait for statistical stability.
+
+**Ignoring segment data.** Apple shows results broken down by traffic source (Search, Browse, App Referral). A screenshot set that wins in Search might lose in Browse. Check whether one source is skewing your aggregate number.
+
+**Not documenting.** Keep a simple spreadsheet: what you tested, hypothesis, result, confidence level, decision. Over 12 months, this becomes your most valuable ASO asset.
+
+---
+
+## Custom Product Pages: Beyond Basic A/B Testing
+
+PPO is for your default listing. Custom Product Pages (CPP) let you create entirely different listing pages — each with its own URL — for different ad campaigns or keyword segments.
+
+The winning use case: run Apple Search Ads campaigns pointing to a CPP that matches the search intent of specific keywords. A fitness app targeting "couch to 5K" gets a different listing than one targeting "marathon training."
+
+CPPs don't affect organic rankings, but the conversion lift on paid campaigns often justifies the production cost.
+
+---
+
+## Getting Started
+
+1. In App Store Connect, go to your app → **Product Page Optimization**
+2. Create a new test, select which element to test
+3. Upload your treatment creative(s)
+4. Set traffic allocation (50/50 is standard for a single treatment)
+5. Submit for review — Apple reviews test assets before activation
+
+Review typically takes 24-48 hours. Once live, monitor daily for the first week, then let it run.
+
+The developers seeing compounding ASO gains are the ones running one test per month, consistently, and building a body of evidence about what their audience responds to. Start this month.

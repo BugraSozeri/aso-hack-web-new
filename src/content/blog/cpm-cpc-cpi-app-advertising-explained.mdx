@@ -1,0 +1,114 @@
+---
+title: "CPM vs CPC vs CPI: Choosing the Right Bidding Model for App Advertising"
+description: "CPM, CPC, CPI — three bidding models with very different risk profiles. Here's how to choose the right one for your app campaign and budget."
+category: "Ad Fundamentals"
+date: "2026-03-29"
+author: "ASOHack Team"
+published: true
+---
+
+## CPM vs CPC vs CPI: Choosing the Right Bidding Model for App Advertising
+
+When you run a mobile ad campaign, you're essentially betting on a conversion funnel. CPM, CPC, and CPI represent three different points in that funnel where you agree to pay — and each puts a different amount of risk on you vs. the ad network.
+
+Understanding which model to use, and when, is one of the most leverage-able skills in mobile user acquisition.
+
+---
+
+## The Three Models Defined
+
+**CPM — Cost Per Mille (Cost Per 1,000 Impressions)**
+You pay for every 1,000 times your ad is shown, regardless of clicks or installs. The cheapest entry point per unit, but all conversion risk sits with you.
+
+**CPC — Cost Per Click**
+You pay each time someone taps your ad. The network bears the impression risk; you bear the install risk.
+
+**CPI — Cost Per Install**
+You pay only when someone installs your app. The network bears impression and click risk; you pay for outcomes.
+
+There's also CPA (Cost Per Action) and CPE (Cost Per Engagement), but CPM/CPC/CPI cover the vast majority of app campaigns.
+
+---
+
+## The Math Behind Each Model
+
+Say your campaign produces:
+- 100,000 impressions
+- 2,000 clicks (2% CTR)
+- 200 installs (10% CVR click-to-install)
+
+At:
+- **$5 CPM** → you pay 100 × $5 = **$500** → $2.50 CPI effective
+- **$0.20 CPC** → you pay 2,000 × $0.20 = **$400** → $2.00 CPI effective
+- **$3.00 CPI** → you pay 200 × $3.00 = **$600** → $3.00 CPI effective
+
+In this scenario, CPC wins. But change the CTR to 0.5% and CVR to 3%:
+- **$5 CPM** → $500 → $33 effective CPI
+- **$0.20 CPC** → 500 × $0.20 = $100 → $16 effective CPI
+- **$3.00 CPI** → 15 × $3 = $45 → $3.00 CPI effective
+
+Suddenly CPI looks much better. The model that's cheapest depends entirely on your creative quality and landing page conversion.
+
+---
+
+## When to Use CPM
+
+**Best for:** Brand awareness campaigns, retargeting, testing new creatives.
+
+CPM gives you the most control over who sees your ad (targeting is broad) and the most data for the lowest cost-per-data-point. When you're testing 10 creative variants, CPM lets you get impressions on all of them quickly and cheaply, so you can identify which creative has the best CTR before committing to CPC or CPI bids.
+
+**Risk:** If your CTR is poor (&lt;0.5%), your effective CPI will be very high. Use CPM only when you're confident in your targeting or are deliberately running brand campaigns.
+
+---
+
+## When to Use CPC
+
+**Best for:** Testing new audiences, mid-funnel optimization, high-CTR creatives with uncertain install rates.
+
+CPC is the intermediate model. You're paying for intent (someone tapped), but you haven't validated that your store listing converts. If you have a compelling creative but an untested or weak listing, CPC lets you test the full funnel without paying CPI prices.
+
+It's also useful for keyword campaigns on networks like Apple Search Ads, where you're targeting specific search terms and paying per tap — the intent is high enough that click-to-install rates are typically 30-70%.
+
+---
+
+## When to Use CPI
+
+**Best for:** Scaling proven campaigns, performance marketing with known LTV.
+
+CPI is the safest model from a budget predictability standpoint — you know exactly what each user costs. It's the standard model for scale.
+
+The tradeoff: CPI bids tend to be higher than the effective CPI you'd pay on CPM/CPC if your creatives are excellent. The network is pricing in their risk. You're paying a premium for certainty.
+
+CPI also means the network optimizes for installs above all else — which can sometimes deliver users who install and immediately churn. Always pair CPI campaigns with post-install event tracking (D7 retention, first purchase) and shift to CPA/ROAS bidding once you have enough data.
+
+---
+
+## The Progression Most Mature UA Teams Use
+
+1. **Start with CPM** to test 5-10 creative concepts cheaply. Identify the 1-2 with &gt;1.5% CTR.
+2. **Switch to CPC** on the winning creatives to test full-funnel (click → install) performance. Identify which audience + creative combinations produce installs under your target CPI.
+3. **Scale with CPI or ROAS bidding** on the proven combinations. Let the network's ML optimize delivery.
+
+This progression minimizes wasted spend on unproven variables.
+
+---
+
+## Platform-Specific Notes
+
+**Meta (Facebook/Instagram):** Defaults to CPM with automated optimization. Set your campaign objective to "App Installs" and Meta will optimize CPM delivery toward users likely to install. Effectively acts like a CPI campaign.
+
+**Apple Search Ads:** Uses CPC exclusively for Search campaigns. CPM (CPT — cost per thousand) is available for display placements.
+
+**Google UAC:** Fully automated, targets CPA or Target ROAS. You don't choose CPM/CPC — you set a target CPI or ROAS and Google manages everything.
+
+**TikTok:** Offers CPM, CPC, and oCPM (optimized CPM, where TikTok optimizes for an action). For app installs, oCPM optimized toward "App Install" is the most common starting point.
+
+---
+
+## The Metric That Ties It All Together
+
+Regardless of which bidding model you use, the number you actually care about is **effective CPI** (total spend ÷ total installs) and whether it's below your **LTV target**.
+
+If your 30-day LTV is $8 and your effective CPI is $6, you're profitable. If your effective CPI is $12, you're not — regardless of whether you're bidding CPM, CPC, or CPI.
+
+Choose your bidding model based on where you are in the testing cycle. Optimize relentlessly toward the unit economics that make your app sustainable.
