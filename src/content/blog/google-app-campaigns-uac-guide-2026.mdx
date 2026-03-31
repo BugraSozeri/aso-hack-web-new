@@ -1,0 +1,147 @@
+---
+title: "Google App Campaigns (UAC) Guide: How to Run Profitable Install Campaigns in 2026"
+description: "Google's Universal App Campaigns are fully automated — but that doesn't mean you have no control. Here's how to set them up correctly, feed the algorithm the right signals, and scale profitably."
+category: "Ad Networks"
+date: "2026-03-31"
+author: "ASOHack Team"
+published: true
+---
+
+## Google App Campaigns (UAC) Guide: How to Run Profitable Install Campaigns in 2026
+
+Google App Campaigns (formerly Universal App Campaigns, still commonly called UAC) are unlike any other ad format. You don't choose placements, set bids by keyword, or manually create ads. You provide assets and a target CPI or ROAS, and Google's machine learning handles the rest.
+
+This automation is both the power and the frustration of UAC. Here's how to work with the algorithm — not against it — to drive profitable installs.
+
+---
+
+## How UAC Works
+
+When you create a Google App Campaign, you provide:
+- Text assets (up to 5 headlines, up to 5 descriptions)
+- Image assets (multiple aspect ratios)
+- Video assets (landscape, portrait, square)
+- Your app's store listing (Google pulls additional creative from here)
+- A target CPI (for installs) or target ROAS (for revenue)
+
+Google then distributes your ads across:
+- Google Search
+- Google Play Store search and browse
+- YouTube (pre-roll and in-stream)
+- Google Display Network (millions of websites and apps)
+- Gmail
+
+The algorithm decides which assets to show, to whom, on which placement, at what bid — all automatically. You cannot control placement or bidding at a granular level.
+
+---
+
+## Campaign Types: Install vs. Action vs. Value
+
+**App Install Campaigns (tCPI):** Optimizes for maximum installs at your target CPI. Good for building volume and feeding the algorithm user data.
+
+**App Action Campaigns (tCPA):** Optimizes for specific in-app events (trial start, first purchase, level completion). Requires at least 10-15 conversion events per week to optimize effectively — don't use this until you have volume.
+
+**App Value Campaigns (tROAS):** Optimizes for revenue, not just conversions. Requires purchase data passed back to Google via Firebase or an MMP. The most sophisticated option — use it when you have clear LTV data by cohort.
+
+For most indie developers starting out: begin with an Install campaign, build volume, then graduate to an Action campaign once you have 50+ conversions per month.
+
+---
+
+## Asset Creation: The Only Real Control You Have
+
+Since you can't control targeting or bidding directly, your creative assets are your primary lever. Google mixes and matches your assets across placements — every combination needs to work independently.
+
+**Text assets:**
+- 5 headlines (30 characters max each): Lead with your strongest benefit. Vary the angle — don't write 5 versions of the same message.
+- 5 descriptions (90 characters max each): Complement the headlines. Include social proof, key features, and urgency.
+
+Avoid repetition across headlines and descriptions. If "Track habits effortlessly" is a headline, don't make a description "The easiest way to track habits." Google penalizes repetition in its asset quality score.
+
+**Image assets (provide all formats):**
+- 1200×628 (landscape banner)
+- 1200×1200 (square)
+- 960×1200 or 628×1200 (portrait)
+
+Always provide all three aspect ratios. Missing formats limit your placement options — Google simply won't show your ad in formats you haven't provided.
+
+**Video assets (the most important, most neglected):**
+Video drives a disproportionate share of UAC performance — particularly on YouTube. Develop at minimum:
+- One 15-second landscape video (YouTube pre-roll)
+- One 15-second vertical video (YouTube Shorts, mobile display)
+
+The first 5 seconds of video are critical — YouTube allows users to skip after 5 seconds. Your hook must be compelling enough in that window to justify the remaining runtime.
+
+No video? Google will auto-generate one from your store screenshots. Auto-generated videos consistently underperform developer-created videos — invest in at least one proper video asset.
+
+---
+
+## Bidding Strategy and Budget Setup
+
+**Starting tCPI:** Research your category's average CPI before setting a target. Setting your tCPI too low causes the algorithm to underspend (it can't find users at that price point). Setting it too high burns budget on low-quality installs.
+
+Starting point: set tCPI at 1.5-2x what you'd ideally pay. Let the campaign run for 2 weeks. Evaluate quality (retention, conversion rates) and gradually tighten toward your target.
+
+**Daily budget:** Google recommends a daily budget of at least 50x your target CPI to give the algorithm enough room to learn. If your target CPI is $2, set a minimum $100/day budget during the learning phase.
+
+Under-budgeting is the most common reason UAC campaigns fail to optimize. A campaign that can only show ads to 200 users per day doesn't generate enough signal to learn effectively.
+
+**Learning period:** UAC campaigns need 2-4 weeks of data before performance stabilizes. During this period, resist the urge to change bids, budgets, or assets. Every change resets the learning period.
+
+---
+
+## Firebase Integration: Non-Negotiable
+
+Google App Campaigns optimize toward the signals you provide. Without Firebase (or an MMP), Google only sees installs — it can't tell the difference between a high-value subscriber and a user who installed and immediately uninstalled.
+
+Connect Firebase to your app and log key events:
+- `first_open` (automatic)
+- `tutorial_complete` (onboarding finished)
+- `trial_started`
+- `purchase` (pass the revenue value, not just the event)
+- `subscription_cancel` (optional but useful)
+
+Mark the events that matter most as "conversion events" in Google Ads. When you graduate to Action or Value campaigns, these events are what Google optimizes for.
+
+Without proper event tracking, you're flying blind — and so is Google's algorithm.
+
+---
+
+## Geographic and Language Targeting
+
+UAC does allow geographic and language targeting, unlike most other campaign controls.
+
+Start with Tier 1 markets (US, UK, Canada, Australia) if your app has strong monetization. eCPMs are highest here, and Google's algorithm has the most data for optimization.
+
+If you have existing organic installs in other markets, add those geographies — the algorithm can use your existing user data from those regions to find similar users.
+
+Separate campaigns by geography if your CPIs vary significantly by region. A single campaign mixing US ($3+ CPI) and emerging markets ($0.30 CPI) confuses the algorithm's optimization target.
+
+---
+
+## Reading UAC Reports
+
+Google's reporting for App Campaigns is less granular than other campaign types by design. Key metrics to track:
+
+**Install volume and tCPI achievement:** Is actual CPI within 20% of your target? If significantly above, lower your tCPI bid slowly (10% at a time, not more than once per week). If significantly below with good volume, consider lowering the bid to improve economics.
+
+**Asset performance:** Google rates each asset as "Best," "Good," "Low," or "Learning." Replace "Low" assets after 2-3 weeks. Never delete all assets of a type — always keep at least 2-3 active per format.
+
+**Conversion quality:** Track post-install events separately. A low-CPI campaign that drives users who never convert to paid is worse than a higher-CPI campaign driving high-intent users.
+
+---
+
+## When UAC Works Best and When It Doesn't
+
+**Works well for:**
+- Android apps (Google has more data and distribution)
+- Apps with clear in-app events and Firebase set up
+- Established apps with LTV data to feed into tROAS campaigns
+- Categories with decent search volume on Google Play
+
+**Struggles with:**
+- iOS apps post-ATT (limited user-level signal; SKAdNetwork conversion values help but add complexity)
+- Brand-new apps with no conversion history (no signal to optimize from)
+- Very niche apps where target audience is too small for meaningful scale
+- Apps without video assets (auto-generated video underperforms)
+
+For iOS apps specifically, Apple Search Ads typically outperforms UAC at comparable budgets due to better signal quality. Use UAC primarily for Android, and consider it a supplementary channel for iOS until ATT consent rates improve.

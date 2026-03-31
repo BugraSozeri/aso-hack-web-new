@@ -1,0 +1,115 @@
+---
+title: "App Retargeting: How to Win Back Users Who Installed But Never Converted"
+description: "The average app loses 77% of users within 3 days of install. Retargeting campaigns can recapture high-intent lapsed users at a fraction of the cost of new user acquisition. Here's how."
+category: "Ad Fundamentals"
+date: "2026-03-31"
+author: "ASOHack Team"
+published: true
+---
+
+## App Retargeting: How to Win Back Users Who Installed But Never Converted
+
+You spend money acquiring a user. They install your app, poke around for 90 seconds, and never open it again. For most apps, this is the fate of the majority of installs — and it represents a massive pool of wasted acquisition spend.
+
+Retargeting is the discipline of re-engaging those users. Done right, it's the highest-ROI advertising channel available to most app developers, because you're reaching people who already know your app exists.
+
+---
+
+## Who to Retarget: Audience Segmentation
+
+Not all lapsed users are equally worth pursuing. The key to effective retargeting is targeting the right segment with the right message.
+
+**Segment 1: Installed, never completed onboarding**
+These users showed enough interest to install but dropped off before experiencing the core value. They're the highest-intent segment — something interrupted them, or your onboarding created too much friction. These users are most responsive to retargeting.
+
+**Segment 2: Completed onboarding, never subscribed/purchased**
+These users experienced your product but didn't convert. They understand the value proposition — they just weren't convinced enough to pay. Effective messages here: social proof, limited-time offers, or addressing the specific objection that stopped them.
+
+**Segment 3: Previous subscribers who churned**
+Former paying users are gold. They've already validated they find enough value to pay — something changed (price, feature, life circumstance). These users convert to re-subscriptions at 2-5x the rate of first-time subscribers when properly targeted.
+
+**Segment 4: Active free users who haven't hit the paywall**
+For freemium apps, these users use the app regularly but have never seen the upgrade prompt at the right moment. Retargeting these users with a specific offer (free trial, discount) often outperforms in-app prompts because it catches them outside the app context.
+
+---
+
+## Technical Requirements: What You Need Before Launching
+
+**Mobile Measurement Partner (MMP).**
+You need AppsFlyer, Adjust, Branch, or similar to properly attribute retargeting conversions. Without an MMP, you can't verify that your retargeting actually drove the conversion (vs. the user opening the app organically).
+
+**Audience Sync.**
+Your MMP creates audiences based on in-app events (installed, completed onboarding, started trial, churned) and pushes them to ad networks. Meta, Google, TikTok, and most major networks accept MMP audience syncs.
+
+**Deep Links.**
+Retargeting ads should deep link directly to the relevant in-app screen — not your home screen. An ad targeting users who abandoned the paywall should open directly on the paywall. A re-engagement ad for a lapsed habit tracker user should open on their streak/progress screen. Deep links require proper setup through your MMP or Branch.io.
+
+**Suppression Lists.**
+Always exclude current paying subscribers from retargeting. Showing acquisition ads to people who are already paying is wasteful at best, annoying at worst. Set up suppression audiences in your MMP and sync them to all networks.
+
+---
+
+## Platform-Specific Retargeting
+
+**Meta (Facebook/Instagram)**
+The most mature retargeting ecosystem for consumer apps. Create Custom Audiences from your MMP events, then Lookalike Audiences from your highest-LTV user cohort. Meta's algorithm is particularly good at finding the right moment to re-engage — it knows when a user is most receptive based on their activity patterns.
+
+Best placements for retargeting: Instagram Stories (high CTR for visual apps), Facebook Feed (higher conversion intent), and Messenger (rarely used but very low competition).
+
+**Google Ads (RLSA + App Campaigns)**
+Google's remarketing for apps uses Firebase or an MMP integration. You can target users who took specific in-app actions with App Campaign retargeting. Google's strength is search-based retargeting — users actively searching for solutions similar to yours can be intercepted with ads that reference their prior install.
+
+**Push Notifications (not paid, but the highest ROI channel)**
+Before spending a dollar on retargeting ads, maximize push notification re-engagement. Users who granted push permissions are reachable for free. A well-timed push with a specific offer ("Your 7-day free trial is waiting — expires in 24 hours") can re-engage 5-15% of lapsed users. This should always be your first re-engagement tool.
+
+---
+
+## Creative Strategy for Retargeting
+
+Retargeting creative should be fundamentally different from acquisition creative.
+
+**Acquisition ads** explain what the app is and why someone should care.
+
+**Retargeting ads** acknowledge the user's prior experience and address the gap between install and conversion.
+
+Effective retargeting creative frameworks:
+
+*The reminder:* "You haven't finished setting up [App]. Your personalized plan is waiting."
+
+*The social proof update:* "Since you last visited, 12,000 new users have joined [App]. Here's what they're saying..."
+
+*The objection address:* "Was [App] missing something? We just added [Feature]. Try it free."
+
+*The urgency:* "Your free trial offer expires in 48 hours. Start now — cancel anytime."
+
+*The win-back offer:* Specifically for churned subscribers — a targeted discount to return ("Come back for 50% off your first month back").
+
+---
+
+## Measuring Retargeting Effectiveness
+
+The key metrics differ from acquisition campaigns:
+
+**Re-engagement rate:** What percentage of users who saw the ad opened the app within 7 days? Benchmark: 5-15% is solid.
+
+**Post-retargeting conversion rate:** Of re-engaged users, what percentage converted to paid? This should be significantly higher than cold traffic conversion — 15-40% is typical for well-segmented audiences.
+
+**Retargeting ROAS:** Revenue from re-engaged users ÷ retargeting ad spend. Because you're not paying for MMP attribution on re-engaged users (they're already installed), your effective ROAS should be substantially higher than acquisition ROAS.
+
+**Incremental lift:** The key question — are retargeted users converting because of the ad, or would they have converted anyway? Use a holdout group (10-20% of the retargeting audience who don't see ads) to measure true incremental impact. Without this, you risk over-attributing credit to retargeting.
+
+---
+
+## Frequency Capping
+
+Retargeting without frequency caps becomes harassment. Users who see your app ad 8 times in a week will associate your brand with annoyance, not value.
+
+Start with a cap of 3 impressions per user per week. Monitor ad frequency in reporting — if average frequency exceeds 4, either expand your audience or reduce budget. For re-engagement campaigns specifically, the window after showing an ad and before the user makes a decision is typically 24-72 hours. Showing ads after 3 days of non-response has diminishing returns.
+
+---
+
+## Budget Allocation
+
+A common rule of thumb from growth teams: allocate 15-25% of total UA budget to retargeting. This ratio tends to maximize blended ROAS because retargeting converts at higher rates per dollar spent.
+
+For indie apps with limited budgets: start retargeting before you start paid acquisition. Your organic install base is already a retargeting audience — re-engaging them costs less than finding new users and often produces quick revenue wins that fund further acquisition.
