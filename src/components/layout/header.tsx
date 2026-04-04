@@ -43,10 +43,10 @@ export function Header() {
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
           <Button variant="ghost" size="sm" asChild>
-            <Link href="/login">Log in</Link>
+            <Link href="/pricing">Log in</Link>
           </Button>
           <Button size="sm" className="rounded-lg bg-amber-500 px-4 font-semibold text-white shadow-sm shadow-amber-500/25 hover:bg-amber-600" asChild>
-            <Link href="/signup">Get Started Free</Link>
+            <Link href="/pricing">Get Started Free</Link>
           </Button>
         </div>
 
@@ -71,10 +71,10 @@ export function Header() {
                 ))}
                 <div className="mt-4 flex flex-col gap-2">
                   <Button variant="outline" asChild>
-                    <Link href="/login" onClick={() => setOpen(false)}>Log in</Link>
+                    <Link href="/pricing" onClick={() => setOpen(false)}>Log in</Link>
                   </Button>
                   <Button className="rounded-lg bg-amber-500 font-semibold text-white shadow-sm shadow-amber-500/25 hover:bg-amber-600" asChild>
-                    <Link href="/signup" onClick={() => setOpen(false)}>Get Started Free</Link>
+                    <Link href="/pricing" onClick={() => setOpen(false)}>Get Started Free</Link>
                   </Button>
                 </div>
               </nav>

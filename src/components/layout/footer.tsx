@@ -6,13 +6,13 @@ const footerLinks = {
     { name: "Tools", href: "/tools" },
     { name: "Ad Analytics", href: "/tools/ad-analytics" },
     { name: "Pricing", href: "/pricing" },
-    { name: "Changelog", href: "/changelog" },
+    { name: "Ads", href: "/ads" },
   ],
   Resources: [
     { name: "Blog", href: "/blog" },
     { name: "ASO Guide", href: "/blog/aso-guide-for-beginners" },
     { name: "Ad Metrics 101", href: "/blog/mobile-ad-metrics-guide" },
-    { name: "Documentation", href: "/docs" },
+    { name: "About", href: "/about" },
   ],
   Advertising: [
     { name: "Ad Networks", href: "/ads" },
@@ -23,7 +23,6 @@ const footerLinks = {
     { name: "About", href: "/about" },
     { name: "Contact", href: "mailto:hello@asohack.com" },
     { name: "Privacy", href: "/privacy" },
-    { name: "Terms", href: "/terms" },
   ],
 };
 
